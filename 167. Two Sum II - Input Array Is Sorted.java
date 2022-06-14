@@ -16,6 +16,8 @@ class Solution {
                   break;
                 
             }
+
+            
             
             if(sum>target)
                 end--;
