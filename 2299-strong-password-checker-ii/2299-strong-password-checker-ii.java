@@ -1,7 +1,7 @@
 class Solution {
     public boolean strongPasswordCheckerII(String a) {
       int i,j,l=a.length();
-        boolean num=true,spec=true,lower=true,upper=true;
+        boolean num=false,spec=false,lower=false,upper=false;
         boolean adj=false;
        if(l<8)
            return false;
@@ -12,16 +12,16 @@ class Solution {
           if(i+1<l && a.charAt(i)==a.charAt(i+1))
               return false;
           if(c>='0' && c<='9')
-              num=false;
+              num=true;
           if(c>='a' && c<='z')
-              lower=false;
+              lower=true;
            if(c>='A' && c<='Z')
-              upper=false;
+              upper=true;
            if("!@#$%^&*()-+".contains(s))
-              spec=false;
+              spec=true;
           
       }
-        if(!num && !spec && !lower &&!upper)
+        if(num && spec && lower &&upper)
             return true;
         return false;
     }
