@@ -6,6 +6,7 @@
 <p><strong>Example 1:</strong></p>
 
 <pre><strong>Input:</strong> arr = [1,0,2,3,0,4,5,0]
+
 <strong>Output:</strong> [1,0,0,2,3,0,0,4]
 <strong>Explanation:</strong> After calling your function, the input array is modified to: [1,0,0,2,3,0,0,4]
 </pre>
