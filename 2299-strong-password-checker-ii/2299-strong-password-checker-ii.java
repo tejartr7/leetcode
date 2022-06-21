@@ -2,7 +2,7 @@ class Solution {
     public boolean strongPasswordCheckerII(String a) {
       int i,j,l=a.length();
         boolean num=true,spec=true,lower=true,upper=true;
-        boolean adj=false;
+      
        if(l<8)
            return false;
       for(i=0;i<l;i++)
