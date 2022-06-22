@@ -14,7 +14,7 @@ class Solution {
         ListNode n=head.next;
         while(n!=null)
         {
-            if(n.val!=0)
+            if(n.val!=0 && n!=curr)
             {
                 curr.val+=n.val;
             }
