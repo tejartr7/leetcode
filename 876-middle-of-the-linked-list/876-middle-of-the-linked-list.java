@@ -10,14 +10,13 @@
  */
 class Solution {
     public ListNode middleNode(ListNode head) {
-        ListNode[] k=new ListNode[100];
-        int t=0;
-        while(head!=null)
+        ListNode a=head;
+        ListNode b=head;
+        while( a!=null && a.next!=null)
         {
-            k[t]=head;
-            head=head.next;
-            t++;
+            a=a.next.next;
+            b=b.next;
         }
-        return k[t/2];
+        return b;
     }
 }
