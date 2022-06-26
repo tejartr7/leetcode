@@ -1,7 +1,7 @@
 class MyHashSet {
-  ArrayList<Integer> a;
+ LinkedList<Integer>a;
     public MyHashSet() {
-        a=new ArrayList<>();
+        a=new LinkedList<>();
     }
     
     public void add(int key) {
