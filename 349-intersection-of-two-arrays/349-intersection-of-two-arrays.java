@@ -2,7 +2,7 @@ class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
      List<Integer>a=new ArrayList<Integer>();
          List<Integer>b=new ArrayList<Integer>();
-         List<Integer>c=new ArrayList<Integer>();
+      //   List<Integer>c=new ArrayList<Integer>();
         int i;
         int l=nums1.length;
         for(i=0;i<l;i++)
