@@ -1,14 +1,14 @@
-class CustomStack {
+public class CustomStack {
     int a[];
     int count=0;
-    int xa=0;
+    int  size=0;
     public CustomStack(int maxSize) {
         a=new int[maxSize];
-        xa=maxSize;
+        size=maxSize;
     }
     
     public void push(int x) {
-        if(count<xa)
+        if(count<size)
         {a[count]=x;
          count++;
         }
@@ -41,10 +41,3 @@ class CustomStack {
     }
 }
 
-/**
- * Your CustomStack object will be instantiated and called as such:
- * CustomStack obj = new CustomStack(maxSize);
- * obj.push(x);
- * int param_2 = obj.pop();
- * obj.increment(k,val);
- */
