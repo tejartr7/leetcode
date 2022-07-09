@@ -16,6 +16,7 @@ class Solution {
                     b=0;
                     a++;
                 }
+                
                 s[i][j]=mat[a][b];
                 b++;
             }
