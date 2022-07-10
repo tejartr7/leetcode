@@ -4,13 +4,13 @@ class Solution {
         int count=0;
         for(i=0;i<matrix.length;i++)
         {
-for(j=0;j<matrix[i].length;j++)
-{
-    if(target==matrix[i][j])
-    {   count++;
-    break;
-    }
-}
+        for(j=0;j<matrix[i].length;j++)
+        {
+            if(target==matrix[i][j])
+            {   count++;
+            break;
+            }
+        }
             }
         if(count==0)
             return false;
