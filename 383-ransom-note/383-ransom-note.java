@@ -1,23 +1,29 @@
 class Solution {
-    public boolean canConstruct(String s, String t) {
-     HashMap<Character, Integer> hm1 = new HashMap<>(); //will contain character frequency of t or magazine
-        HashMap<Character, Integer> hm2 = new HashMap<>(); //will contain character frequency of s or ransomnote
-       
-        for(int i =0; i<s.length(); i++){
-            hm1.put(s.charAt(i), hm1.getOrDefault(s.charAt(i),0)+1); //storing frequency of ransomnote
+    public boolean canConstruct(String a, String b) {
+      HashMap<Character,Integer> set1=new HashMap<>();
+         HashMap<Character,Integer> set2=new HashMap<>();
+      
+        for(int i=0;i<a.length();i++)
+        {
+            set1.put(a.charAt(i),set1.getOrDefault(a.charAt(i),0)+1);
         }
-         for(int i =0; i<t.length(); i++){
-            hm2.put(t.charAt(i), hm2.getOrDefault(t.charAt(i),0)+1);  //storing frequency of magazine
+          for(int i=0;i<b.length();i++)
+        {
+            set2.put(b.charAt(i),set2.getOrDefault(b.charAt(i),0)+1);
         }
-        
-        for(int i = 0; i<s.length(); i++){
-            if(hm2.containsKey(s.charAt(i))){  // if magazine contains the character in ransomnote or not
-                if(hm2.get(s.charAt(i))>=hm1.get(s.charAt(i))) continue; //if yes then does magazine has  
-				//enough freq for that character  that ransomnote requires
-                else return false; // if magazine does not have enough freq for that character return false
+        for(int i=0;i<a.length();i++)
+        {
+            if(set2.containsKey(a.charAt(i)))
+            {
+                if(set2.get(a.charAt(i))>=set1.get(a.charAt(i)))
+                {
+                    continue;
+                }
+                return false;
             }
-            else return false; // if magazine does not have character that ransomnote has
+            return false;
         }
-        return true; 
+        return true;
+        
     }
 }
