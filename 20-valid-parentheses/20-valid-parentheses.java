@@ -9,21 +9,27 @@ class Solution {
         Stack<Character> b=new Stack<>();
         for(i=0;i<l;i++)
         {
-            switch(a[i])
+            if(a[i]==')')
             {
-                case ')':if(b.isEmpty() || b.pop()!='(')
+                if(b.isEmpty() ||b.pop()!='(')
                     return false;
-                    break;
-                case '}':if(b.isEmpty() ||b.pop()!='{')
-                    return false;
-                    break;
-                       case ']':if(b.isEmpty() ||b.pop()!='[')
-                    return false;
-                    break;
-                default:b.push(a[i]);
-                    break;
                 
             }
+           else if(a[i]==']')
+            {
+                if(b.isEmpty() ||b.pop()!='[')
+                    return false;
+                
+            }
+            else if(a[i]=='}')
+            {
+                if(b.isEmpty() ||b.pop()!='{')
+                    return false;
+                
+            }
+            else
+                b.push(a[i]);
+            
         }
     return b.isEmpty();
     
