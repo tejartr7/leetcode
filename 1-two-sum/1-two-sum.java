@@ -6,27 +6,18 @@ class Solution {
         int []a=new int[2];
         int i,j;
         int k=nums.length;
-        int start=0;
-        int end=k-1;
-        while(start<=end)
+        HashMap<Integer,Integer> diff=new HashMap<>();
+        for(i=0;i<k;i++)
         {
-         if(nums[start]+nums[end]==target && start!=end)
-         {
-             a[0]=start;
-             a[1]=end;
-             break;
-         }
-            else if(end==start)
+            if(diff.containsKey(nums[i]))
             {
-                start=start+1;
-                end=k-1;
+                a[0]=diff.get(nums[i]);
+                a[1]=i;
             }
-            else
-            {
-                end--;
-            }
-            
+            int difference=target-nums[i];
+            diff.put(difference,i);
         }
-       return a;
+ 
+        return a;
 }
 }
