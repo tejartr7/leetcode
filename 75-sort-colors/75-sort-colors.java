@@ -12,10 +12,7 @@ class Solution {
             }
             }
         }
-        for(i=0;i<nums.length;i++)
-        {
-        System.out.print(nums[i]);    
-        }
+      
         
         
     }
