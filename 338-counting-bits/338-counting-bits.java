@@ -2,22 +2,12 @@ class Solution {
     public int[] countBits(int n) {
           int i=0;
           int a[]=new int[n+1];
-          while(i<=n)
+          for(i=0;i<=n;i++)
           {
-              int count=0;
-              int j;
-              String s=Integer.toBinaryString(i);
-              int l=s.length();
-              for(j=0;j<l;j++)
-              {
-                  char c=s.charAt(j);
-                  if(c=='1')
-                      count++;
-                  
-              }
-              a[i]=count;
-              count=0;
-              i++;
+              if(i%2==0)
+                  a[i]=a[i/2];
+              else
+                  a[i]=a[i/2]+1;
           }
         return a;
     }
