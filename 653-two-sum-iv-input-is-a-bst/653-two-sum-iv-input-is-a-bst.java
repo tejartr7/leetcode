@@ -15,14 +15,19 @@
  */
 class Solution {
     public boolean findTarget(TreeNode root, int k) {
-       HashSet set=new HashSet();
-return findTwoSum(root,k,set);
-}
-private boolean findTwoSum(TreeNode root, int k,HashSet set){
-if(root==null)return false;
-if(set.contains(k-root.val))return true;
-else set.add(root.val);
-return findTwoSum(root.left,k,set) || findTwoSum(root.right,k,set);
-        
+      HashSet<Integer> a=new HashSet<>();
+        return find(root,k,a);
     }
+    public boolean find(TreeNode root,int k,HashSet a)
+    {
+        if(root==null)
+            return false;
+        else if(a.contains(k-root.val))
+            return true;
+        else
+            a.add(root.val);
+        return find(root.right,k,a)||find(root.left,k,a);
+    }
+        
+    
 }
