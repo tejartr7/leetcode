@@ -26,7 +26,7 @@ class Solution {
                 a[i][j]=matrix[i][j];
             }
         }
-          for(i=0;i<l;i++)
+        for(i=0;i<l;i++)
         {
             for(j=0;j<b;j++)
             {
@@ -36,10 +36,6 @@ class Solution {
             
                 }
             }
-              
-              
         }
-      
-        
   }
 }
