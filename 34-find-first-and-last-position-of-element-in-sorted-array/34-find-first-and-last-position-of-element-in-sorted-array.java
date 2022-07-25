@@ -6,8 +6,7 @@ class Solution {
         int i;
         if(k==0)
             return a;
-        else
-        {
+       
             for(i=0;i<k;i++)
             {
                 if(nums[i]==target)
@@ -22,6 +21,6 @@ class Solution {
                 
             }
                 return a;
-        }
+        
     }
 }
