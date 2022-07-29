@@ -6,10 +6,9 @@ class Bank {
     }
     
     public boolean transfer(int account1, int account2, long money) {
-        if(account1-1>=a.length)
+        if(account1-1>=a.length||account2-1>=a.length)
             return false;
-        if(account2-1>=a.length)
-            return false;
+       
         if(a[account1-1]<money)
         {
             return false;
