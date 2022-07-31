@@ -21,7 +21,7 @@ class NumArray {
      
         for(i=0;i<left;i++)
         sum-=a[i];
-        for(i=right+1;i<l;i++)
+        for(i=right+1;i<a.length;i++)
             sum-=a[i];
         return sum;
     }
