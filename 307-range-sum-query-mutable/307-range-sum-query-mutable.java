@@ -2,8 +2,9 @@ class NumArray {
     int a[];
     int total=0;
     int i;
+     int l;
     public NumArray(int[] nums) {
-        int l=nums.length;
+        l=nums.length;
         a=new int[l];
         for(i=0;i<l;i++)
         {
@@ -20,7 +21,7 @@ class NumArray {
      
         for(i=0;i<left;i++)
         sum-=a[i];
-        for(i=right+1;i<a.length;i++)
+        for(i=right+1;i<l;i++)
             sum-=a[i];
         return sum;
     }
