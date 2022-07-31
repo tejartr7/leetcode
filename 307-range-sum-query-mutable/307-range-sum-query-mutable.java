@@ -14,7 +14,6 @@ class NumArray {
        total=total+val-a[index];
              a[index]=val;
     }
-    
     public int sumRange(int left, int right) {
         int sum=total;
         int i;
