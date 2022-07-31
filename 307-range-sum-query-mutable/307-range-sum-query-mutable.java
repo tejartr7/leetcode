@@ -1,8 +1,9 @@
 class NumArray {
     int a[];
     int total=0;
+    int i;
     public NumArray(int[] nums) {
-        int i,l=nums.length;
+        int l=nums.length;
         a=new int[l];
         for(i=0;i<l;i++)
         {
@@ -16,7 +17,7 @@ class NumArray {
     }
     public int sumRange(int left, int right) {
         int sum=total;
-        int i;
+     
         for(i=0;i<left;i++)
         sum-=a[i];
         for(i=right+1;i<a.length;i++)
