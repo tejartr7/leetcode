@@ -10,6 +10,5 @@ class Solution {
             start++;
         }
         return sum;
-        
     }
 }
