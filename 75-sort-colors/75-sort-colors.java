@@ -38,9 +38,9 @@ class Solution {
         }
     }
     public void sortColors(int[] nums) {
-       int i;
-       int start=0,end=nums.length-1;
-        mergesort(nums,start,end); 
+     
+      
+        mergesort(nums,0,nums.length-1); 
       
         
         
