@@ -9,7 +9,7 @@ class Solution {
         char c[]=k.toCharArray();
         int start=0;
         int end=c.length-1;
-        while(start<=end)
+        while(start<end)
         {
             if(c[start]!=c[end])
                 return false;
