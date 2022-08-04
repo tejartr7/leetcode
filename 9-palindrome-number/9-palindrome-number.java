@@ -1,23 +1,21 @@
 class Solution {
-    public boolean a(int x)
-    {
-        if(x<0)
-            return false;
+ 
+    public boolean isPalindrome(int x) {
+       if(x<0)
+           return false;
         if(x==0)
             return true;
-        int sum=0;
-        int b=x;
-        while(x>0)
+        String k=String.valueOf(x);
+        char c[]=k.toCharArray();
+        int start=0;
+        int end=c.length-1;
+        while(start<=end)
         {
-          int r=x%10;
-            sum=sum*10+r;
-            x=x/10;
+            if(c[start]!=c[end])
+                return false;
+            start++;
+            end--;
         }
-        if(b==sum)
-            return true;
-        return false;
-    }
-    public boolean isPalindrome(int x) {
-       return a(x);
+        return true;
     }
 }
