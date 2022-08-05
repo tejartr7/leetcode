@@ -7,7 +7,7 @@ class Solution {
         //and current profit zero
         int i;
         int l=prices.length;
-        for(i=0;i<l;i++)
+        for(i=1;i<l;i++)
         {   //update the minimum
             min=Math.min(prices[i],min);
             //check current profit
