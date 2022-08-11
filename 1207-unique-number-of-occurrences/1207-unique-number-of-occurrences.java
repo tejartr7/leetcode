@@ -9,21 +9,13 @@ class Solution {
         }
         int b[]=new int[nums.size()];
         int j=0;
-        for(int k:nums.keySet())
-        {
-            b[j]=nums.get(k);
-            j++;
-            
-        }
         Set<Integer> a=new HashSet<>();
-        int x=nums.size();
-        for(i=0;i<x;i++)
+        for(int x:nums.values())
         {
-            if(a.contains(b[i]))
+            if(a.contains(x))
                 return false;
-            a.add(b[i]);
+            a.add(x);
         }
         return true;
-        
     }
 }
