@@ -6,7 +6,8 @@ class Solution {
         for(int i = 1; i < len; i++) {
             int todayPrice = prices[i];
             int yesterdayPrice = prices[i - 1];
-            if(todayPrice > yesterdayPrice) profit += todayPrice - yesterdayPrice;            
+            if(todayPrice > yesterdayPrice) 
+                profit += todayPrice - yesterdayPrice;            
         }
         return profit;
     }
