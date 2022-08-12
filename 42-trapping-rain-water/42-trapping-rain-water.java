@@ -1,6 +1,6 @@
 class Solution {
     public int trap(int[] height) {
-        int i,j;
+         int i,j;
         int max=0;
         int l=height.length;
         int []a=new int[l];
