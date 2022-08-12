@@ -1,6 +1,6 @@
 class Solution {
     public int threeSumClosest(int[] nums, int target) {
-    int result = 100000;
+    int result = 1000000;
         Arrays.sort(nums);
         
         for (int i = 0; i < nums.length - 2; i++) {
