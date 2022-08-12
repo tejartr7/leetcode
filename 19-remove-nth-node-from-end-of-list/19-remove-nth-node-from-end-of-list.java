@@ -28,7 +28,7 @@ class Solution {
             
         }
         ListNode k=curr.next;
-        if(k!=null && k.next!=null)
+        if(k!=null)
         curr.next=k.next;
         else
             curr.next=null;
