@@ -28,12 +28,12 @@ class Solution {
     }
 
     ListNode getMid(ListNode head) {
-         ListNode a=head.next.next;
-        ListNode b=head;
-        while( a!=null && a.next!=null)
+        
+        ListNode b=null;
+        while( head!=null && head.next!=null)
         {
-            a=a.next.next;
-            b=b.next;
+          b=(b==null)?head:b.next;
+            head=head.next.next;
         }
         ListNode k=b.next;
         b.next=null;
