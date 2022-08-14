@@ -9,6 +9,7 @@
  * }
  */
 class Solution {
+   
     public ListNode middleNode(ListNode head) {
         ListNode a=head;
         ListNode b=head;
@@ -19,4 +20,4 @@ class Solution {
         }
         return b;
     }
-}
+} 
