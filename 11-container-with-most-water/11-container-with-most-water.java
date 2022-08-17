@@ -11,7 +11,7 @@ class Solution {
             i++;
             }
             else
-            {                                   max=Math.max(max,Math.min(height[i],height[j])*(j-i));
+            {max=Math.max(max,Math.min(height[i],height[j])*(j-i));
                 j--;
                 
             }
