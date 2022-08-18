@@ -22,9 +22,9 @@ class Solution {
         
         while(sum<l/2)
         {
-            sum+=b[s-1];
+            sum+=b[j-1];
             count++;
-            s--;
+            j--;
         }
         return count;
     }
