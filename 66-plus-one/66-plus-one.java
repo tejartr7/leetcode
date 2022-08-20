@@ -9,7 +9,8 @@ class Solution {
         }
     }
     if (digits[0] == 0) {
-        int[] res = new int[digits.length+1];
+        int l=digits.length+1;
+        int[] res = new int[l];
         res[0] = 1;
         return res;
     }
