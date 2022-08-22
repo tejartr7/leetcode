@@ -8,12 +8,13 @@ class Solution {
                 {
                  n=n/4;
                 }
+            
                 else
                     return false;
             }
+           
             if(n==1)
                 return true;
-            else 
                 return false;
         
     }
