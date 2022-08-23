@@ -1,37 +1,24 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
-       Map<Integer,Integer> a=new HashMap<>();
+        
         int i;
-        int l=nums.length;
-        int pro=1;
-        a.put(0,0);
-        for(i=0;i<l;i++)
+        int n=nums.length;
+       
+        int res[]=new int[n];
+        res[0]=nums[0];
+        for(i=1;i<n;i++)
         {
-            a.put(nums[i],a.getOrDefault(nums[i],0)+1);
-            if(nums[i]!=0)
-                pro*=nums[i];
-            
-        }
-        if(a.get(0)>1)
+            res[i]=res[i-1]*nums[i];
+          //  System.out.print(res[i]);
+        }       
+        int pro=nums[n-1];
+        res[n-1]=res[n-2];
+        for(i=n-2;i>0;i--)
         {
-            Arrays.fill(nums,0);
-            return nums;
+            res[i]=res[i-1]*pro;
+            pro*=nums[i];
         }
-        for(i=0;i<l;i++)
-        {
-            if(nums[i]!=0 && a.get(0)>0)
-            {
-                nums[i]=0;
-            }
-            else if(nums[i]==0 && a.get(0)==1)
-            {
-                nums[i]=pro;
-            }
-            else if(nums[i]!=0 && a.get(0)==0)
-            {
-              nums[i]=pro/nums[i];
-            }
-        }
-        return nums;
+        res[0]=pro;
+        return res;
     }
 }
