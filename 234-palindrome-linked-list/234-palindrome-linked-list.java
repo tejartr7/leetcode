@@ -9,7 +9,7 @@
  * }
  */
 class Solution {
-     private ListNode reverse(ListNode a)
+   private ListNode reverse(ListNode a)
     { ListNode curr=a;
          ListNode temp=null;
         ListNode prev=null;
