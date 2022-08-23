@@ -24,11 +24,7 @@ class Solution {
                     k--;
                     while(j<k && nums[j]==nums[j-1])
                     j++;
-                     
-                    
-                    
-                    
-                }
+                 }
                 else if(sum<0) j++;
                 else
                     k--;
