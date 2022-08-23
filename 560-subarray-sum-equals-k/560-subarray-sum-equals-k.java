@@ -5,7 +5,7 @@ class Solution {
         int n=nums.length;
         int cur=0;
         int ans=0;
-        a.put(0,1);
+       a.put(0,1);
         for(int i:nums)
         {
             cur+=i;
