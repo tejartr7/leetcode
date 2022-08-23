@@ -13,7 +13,7 @@ class Solution {
             {
                 ans+=a.get(cur-k);
             }
-        a.put(cur,a.getOrDefault(cur,0)+1);
+            a.put(cur,a.getOrDefault(cur,0)+1);
             
         }
         return ans;
