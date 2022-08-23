@@ -1,19 +1,18 @@
 class Solution {
-    public void moveZeroes(int[] a) {
-      int i,j;
-        int n=a.length;
-        int s=0;
-        int []b=new int[a.length];
-        Arrays.fill(b,0);
+    public void moveZeroes(int[] nums) {
+        int i;
+        int n=nums.length;
+        int j=0;
         for(i=0;i<n;i++)
         {
-           if(a[i]!=0)
-           {b[s]=a[i];
-            s++;
-           }
+            if(nums[i]!=0)
+            {
+                nums[j]=nums[i];
+                j++;
+            }
+            
         }
-         for(i=0;i<n;i++)
-        {a[i]=b[i];
-        }
+        for(int k=j;k<n;k++)
+            nums[k]=0;
     }
 }
