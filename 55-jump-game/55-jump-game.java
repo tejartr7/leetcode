@@ -2,7 +2,6 @@ class Solution {
     public boolean canJump(int[] nums) {
         int sum=0;
         int i;
-        int max=0;
         int n=nums.length;
         for(i=0;i<=sum;i++)
         {
