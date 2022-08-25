@@ -1,6 +1,6 @@
 class Solution {
     public boolean canConstruct(String a, String b) {
-      HashMap<Character,Integer> set1=new HashMap<>();
+         HashMap<Character,Integer> set1=new HashMap<>();
          HashMap<Character,Integer> set2=new HashMap<>();
       
         for(int i=0;i<a.length();i++)
@@ -24,6 +24,5 @@ class Solution {
             return false;
         }
         return true;
-        
     }
 }
