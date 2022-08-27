@@ -1,8 +1,12 @@
 class Solution {
+    
     public boolean isPalindrome(String s) {
      String p=s.toLowerCase();
        int start=0;
         int end=p.length()-1;
+        if(s.length()==1||s.length()==0)
+            return true;
+          
         while(start<=end)
         {
             
@@ -15,8 +19,9 @@ class Solution {
                 return false;
             start++;
             end--;
+               
             }
         }
-        return true;
+       return true;
     }
 }
