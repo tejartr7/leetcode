@@ -1,15 +1,11 @@
 class Solution {
     public boolean isPalindrome(String s) {
-     String k=s.toLowerCase();
-        String p=k.replaceAll("\\s","");
-         p=p.replaceAll(",","");
-         p=p.replaceAll(":","");
-         int start=0;
+     String p=s.toLowerCase();
+       int start=0;
         int end=p.length()-1;
         while(start<=end)
         {
-            int kk=(int)p.charAt(start);
-            int k1=(int)p.charAt(end);
+            
             if(!Character.isLetterOrDigit(p.charAt(start)))
                 start++;
            else if(!Character.isLetterOrDigit(p.charAt(end)))
