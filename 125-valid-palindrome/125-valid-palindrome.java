@@ -12,13 +12,14 @@ public class Solution {
         		head++;
         	} else if(!Character.isLetterOrDigit(cTail)) {
         		tail--;
-        	} else {
+        	}else{
         		if (Character.toLowerCase(cHead) != Character.toLowerCase(cTail)) {
         			return false;
-        		}
+                }
+            
         		head++;
         		tail--;
-        	}
+            }
         }
         
         return true;
