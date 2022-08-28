@@ -13,6 +13,6 @@ class Solution {
             return j;
             j++;
         }
-        return j;
+        return nums.length+1;
     }
 }
