@@ -1,6 +1,6 @@
 class Solution {
-    public int firstMissingPositive(int[] nums) {
-     Arrays.sort(nums);
+ public int firstMissingPositive(int[] nums) {
+   //  Arrays.sort(nums);
       int i;
        Set<Integer> a=new HashSet<Integer>();
         for(i=0;i<nums.length;i++)
@@ -8,8 +8,9 @@ class Solution {
             a.add(nums[i]);
         }
         int j=1;
-        while(a.contains(j))
-        {
+        while(j<=nums.length)
+        { if(!a.contains (j))
+            return j;
             j++;
         }
         return j;
