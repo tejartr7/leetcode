@@ -8,11 +8,11 @@ class Solution {
             a.add(nums[i]);
         }
         int j=1;
-        while(j<=nums.length)
+        while(j<=nums.length+1)
         { if(!a.contains (j))
             return j;
             j++;
         }
-        return nums.length+1;
+        return -1;
     }
 }
