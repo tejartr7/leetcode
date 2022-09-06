@@ -6,7 +6,7 @@ class Solution {
         int i,j;
         for(i=0;i<l;i++)
         {
-           for(j=i+1;j<l;j++)
+           for(j=0;j<l;j++)
            {
                if(j>i && nums[i]==nums[j] && (i*j)%k==0)
                    count++;
