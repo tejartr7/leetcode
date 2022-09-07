@@ -5,14 +5,14 @@ class Solution {
         int j=0;
         for(i=0;i<n;i++)
         {
-          
+           ans.push(p[i]);
             while(!ans.isEmpty() && ans.peek()==popped[j])
             {
                 
                 ans.pop();
                 j++;
             }
-              ans.push(p[i]);
+             
         }
         while(!ans.isEmpty() && ans.peek()==popped[j])
         {
