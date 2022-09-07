@@ -15,9 +15,8 @@ class Solution {
              
         }
        
-        if(j==popped.length)
-            return true;
-        return false;
+       
+        return j==popped.length;
         
     }
 }
