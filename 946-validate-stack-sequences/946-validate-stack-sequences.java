@@ -14,11 +14,7 @@ class Solution {
             }
              
         }
-        while(!ans.isEmpty() && ans.peek()==popped[j])
-        {
-            ans.pop();
-            j++;
-        }
+       
         if(j==popped.length)
             return true;
         return false;
