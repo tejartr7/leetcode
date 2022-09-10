@@ -3,16 +3,19 @@ class Solution {
         int l=temperatures.length;
         int i,j;
         int []a=new int[l];
-     Stack<Integer> b=new Stack<>();
+        int count=0;
         for(i=0;i<l;i++)
         {
-         j=temperatures[i];
-            while(!b.empty() && temperatures[b.peek()]<j)
+            for(j=i+1;j<l;j++)
             {
-                int k=b.pop();
-                a[k]=i-k;
+                if(temperatures[j]>temperatures[i])
+                {
+                    a[i]=j-i;
+                    break;
+                    
+                }
+                
             }
-            b.push(i);
         }
         return a;
     }
