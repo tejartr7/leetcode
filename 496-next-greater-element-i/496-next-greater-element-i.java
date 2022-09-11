@@ -1,11 +1,9 @@
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         int i,j,n=nums2.length;
-        int a[]=new int[n];
         Stack<Integer> ans=new Stack<>();
-        a[n-1]=-1;
         ans.push(nums2[n-1]);
-          Map<Integer,Integer>c= new HashMap<>();
+        Map<Integer,Integer>c= new HashMap<>();
         for(i=n-2;i>=0;i--)
         {
             while(!ans.isEmpty() && ans.peek()<=nums2[i])
@@ -14,12 +12,12 @@ class Solution {
             }
             if(ans.isEmpty())
             {
-                a[i]=-1;
+               
                 ans.push(nums2[i]);
                 continue;
             }
           
-             //   a[i]=ans.peek();
+            
                 c.put(nums2[i],ans.peek());
                 ans.push(nums2[i]);
             
