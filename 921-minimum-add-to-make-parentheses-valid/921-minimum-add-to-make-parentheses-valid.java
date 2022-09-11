@@ -1,23 +1,15 @@
 class Solution {
-    public int minAddToMakeValid(String s) {
-        Stack<Character> ans=new Stack<>();
-        int i,n=s.length();
-        for(i=0;i<n;i++)
-        {
-            char ch=s.charAt(i);
-        
-            if(ch==')'){
-            if(!ans.isEmpty()  && ans.peek()=='(')
-            {
-                ans.pop();
+    public int minAddToMakeValid(String S) {
+        int ans = 0, bal = 0;
+        for (int i = 0; i < S.length(); ++i) {
+            bal += S.charAt(i) == '(' ? 1 : -1;
+            // It is guaranteed bal >= -1
+            if (bal == -1) {
+                ans++;
+                bal++;
             }
-            else
-                    ans.push(ch);
-            }
-            else
-                ans.push(ch);
         }
-        return ans.size();
-            
+
+        return ans + bal;
     }
 }
