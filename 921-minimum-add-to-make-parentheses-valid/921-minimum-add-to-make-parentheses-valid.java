@@ -11,9 +11,9 @@ class Solution {
             {
                 ans.pop();
             }
-                else
+            else
                     ans.push(ch);
-                }
+            }
             else
                 ans.push(ch);
         }
