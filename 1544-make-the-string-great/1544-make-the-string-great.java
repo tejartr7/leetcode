@@ -5,11 +5,8 @@ class Solution {
         Stack<Character> ans=new Stack<>();
         for(i=0;i<n;i++)
         {   char ch=s.charAt(i);
-            if(ans.isEmpty())
-            {
-             ans.push(ch);   
-            }
-            else  if(ch+32==ans.peek() || ch-32==ans.peek())
+           
+            if(!ans.isEmpty() && ch+32==ans.peek() || (!ans.isEmpty() &&ch-32==ans.peek()))
             {
                 ans.pop();
             }
