@@ -25,11 +25,11 @@ class Solution {
        // Map<Integer,Integer>c= new HashMap<>();
       
         int n1=nums1.length;
-        int x[]=new int[n1];
+        
         for(i=0;i<n1;i++)
         {
-            x[i]=c.getOrDefault(nums1[i],-1);
+            nums1[i]=c.getOrDefault(nums1[i],-1);
         }
-        return x;
+        return nums1;
     }
 }
