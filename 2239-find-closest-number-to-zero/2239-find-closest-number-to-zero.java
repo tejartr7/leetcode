@@ -7,6 +7,8 @@ class Solution {
         for(i=0;i<n;i++)
         {
             int x=Math.abs(nums[i]-0);
+            if(x==min && nums[i]>ans)
+                ans=nums[i];
             if(x<min)
             {
                 min=x;
@@ -14,10 +16,7 @@ class Solution {
             }
             a.add(nums[i]);
         }
-        if(a.contains(-1*ans) && ans<0)
-        {
-            return -ans;
-        }
+
         return ans;
     }
 }
