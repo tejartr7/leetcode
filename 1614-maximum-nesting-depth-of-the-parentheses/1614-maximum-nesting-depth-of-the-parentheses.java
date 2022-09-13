@@ -11,9 +11,7 @@ class Solution {
             {a.push(ch);
             count++;}
             else if(ch==')')
-            {
-               
-                count--;}
+            {count--;}
             else
                 a.push(ch);
             max=Math.max(max,count);
