@@ -9,7 +9,6 @@ class Solution {
                 a.put(key.charAt(i),original++);
             }
         }
-      
         int n2=message.length();
         String y="";
         for(i=0;i<n2;i++)
