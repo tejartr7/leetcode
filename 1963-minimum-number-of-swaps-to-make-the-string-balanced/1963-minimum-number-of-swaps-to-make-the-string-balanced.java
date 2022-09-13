@@ -2,9 +2,7 @@ class Solution {
     public int minSwaps(String s) {
       Stack<Character> a=new Stack<>();
         int i,n=s.length();
-          int x=0;int y=0;
-        if(n%2==1)
-            return -1;
+          int x=0,y=0;
         for(i=0;i<n;i++)
         {
             char ch=s.charAt(i);
