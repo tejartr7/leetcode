@@ -12,12 +12,7 @@ class Solution {
             count++;}
             else if(ch==')')
             {
-                while(!a.isEmpty() && a.peek()!='(')
-                {
-                    a.pop();
-                    
-                }
-                a.pop();
+               
                 count--;}
             else
                 a.push(ch);
