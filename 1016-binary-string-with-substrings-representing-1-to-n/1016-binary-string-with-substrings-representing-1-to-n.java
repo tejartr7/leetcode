@@ -1,12 +1,11 @@
 class Solution {
     public boolean queryString(String s, int n) {
-        int i=1;
-        while(i<=n)
+        while(n>0)
         {
-            String x=Integer.toBinaryString(i);
+            String x=Integer.toBinaryString(n);
             if(!s.contains(x))
                 return false;
-            i++;
+            n--;
         }
         return true;
     }
