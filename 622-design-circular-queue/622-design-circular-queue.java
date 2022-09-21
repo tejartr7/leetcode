@@ -40,6 +40,8 @@ class MyCircularQueue {
         return false;
     }    
     public boolean isFull() {
-         return (rear + 1) % size == front;
+         if(front==rear+1 ||(front==0 && rear==size-1))
+             return true;
+        return false;
     }
 }
