@@ -35,7 +35,9 @@ class MyCircularQueue {
     }
     
     public boolean isEmpty() {
-       return front == -1 && rear == -1;
+       if(front==-1 && rear==-1)
+           return true;
+        return false;
     }    
     public boolean isFull() {
          return (rear + 1) % size == front;
