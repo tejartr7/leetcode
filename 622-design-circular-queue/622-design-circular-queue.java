@@ -25,12 +25,12 @@ class MyCircularQueue {
     }
     
     public int Front() {
-     if(isEmpty())    return -1;
+     if(front==-1)    return -1;
       return arr[front];
     }
     
     public int Rear() {
-      if(isEmpty())   return -1;
+      if(rear==-1)   return -1;
        return arr[rear];
     }
     
