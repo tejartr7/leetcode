@@ -1,20 +1,35 @@
 class Solution {
-
-    public String reverseWords(String s) {
-        StringBuilder result = new StringBuilder();
-        int lastSpaceIndex = -1;
-        for (int strIndex = 0; strIndex < s.length(); strIndex++) {
-            if ((strIndex == s.length() - 1) || s.charAt(strIndex) == ' ') {
-                int reverseStrIndex = (strIndex == s.length() - 1) ? strIndex : strIndex - 1;
-                for (; reverseStrIndex > lastSpaceIndex; reverseStrIndex--) {
-                    result.append(s.charAt(reverseStrIndex));
-                }
-                if (strIndex != s.length() - 1) {
-                    result.append(' ');
-                }
-                lastSpaceIndex = strIndex;
-            }
+    private String reverse(String a)
+    {
+        int start=0;
+        int end=a.length()-1;
+        char c[]=a.toCharArray();
+        while(start<end)
+        {
+            char temp=c[start];
+            c[start]=c[end];
+            c[end]=temp;
+            start++;
+            end--;
         }
-        return new String(result);
+        return new String(c);
+    }
+    public String reverseWords(String s) {
+      String k[]=s.split(" ");
+        int i;
+        int l=k.length;
+        String ans[]=new String[l];
+        for(i=0;i<l;i++)
+        {
+         ans[i]=reverse(k[i]);   
+        }
+        String p="";
+        p+=ans[0];
+        for(i=1;i<l;i++)
+        {
+            p=p+" "+ans[i];
+        }
+        return p;
+            
     }
 }
