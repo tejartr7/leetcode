@@ -1,20 +1,19 @@
 class Solution {
     public int[] numberOfPairs(int[] nums) {
-        Map<Integer,Integer> a=new HashMap<>();
-        int i,n=nums.length;
-        for(i=0;i<n;i++)
-        {
-            a.put(nums[i],a.getOrDefault(nums[i],0)+1);
-        }
-        int ans[]=new int[2];
-        int count=0;
-        for(int k:a.keySet())
-        {
-            count+=(a.get(k)/2);
-            
-        }
-        ans[0]=count;
-        ans[1]=n-(2*count);
-        return ans;
+       int count[]=new int[101];
+       for(int i:nums)
+       {
+           count[i]++;
+       }
+      int p=0,l=0;
+      for(int x:count)
+      {
+          p+=x/2;
+      }
+        l=nums.length-(2*p);
+        int a[]=new int[2];
+        a[0]=p;
+        a[1]=l;
+        return a;
     }
 }
