@@ -1,5 +1,6 @@
 class Solution {
     public List<Integer> findLonely(int[] nums) {
+        //time optimized solution
         Map<Integer,Integer> map=new HashMap<>();
         List<Integer> lonelyList=new ArrayList<>();
         int i,n=nums.length;
