@@ -1,21 +1,29 @@
 class Solution {
     public List<Integer> findLonely(int[] nums) {
-        //time optimized solution
-        Map<Integer,Integer> map=new HashMap<>();
+        //space optimized solution
         List<Integer> lonelyList=new ArrayList<>();
         int i,n=nums.length;
-        for(i=0;i<n;i++)
+        Arrays.sort(nums);
+        if(n==0)
+            return lonelyList;
+        if(n==1)
         {
-            map.put(nums[i],map.getOrDefault(nums[i],0)+1);
+            lonelyList.add(nums[0]);
+            return lonelyList;
         }
-        for(int x:nums)
+        if(nums[0]!=nums[1] && nums[0]+1!=nums[1])
+            lonelyList.add(nums[0]);
+        for(i=1;i<n-1;i++)
         {
-            int k=map.get(x);
-            if(k>1 || map.containsKey(x-1) || map.containsKey(x+1))
+            if(nums[i]==nums[i-1] || nums[i]==nums[i+1])
+                continue;
+            if(nums[i]==nums[i-1]+1 || nums[i]==nums[i+1]-1)
                 continue;
             else
-                lonelyList.add(x);
+                lonelyList.add(nums[i]);
         }
+        if(nums[n-1]-1!=nums[n-2] && nums[n-1]!=nums[n-2])
+            lonelyList.add(nums[n-1]);
         return lonelyList;
     }
 }
