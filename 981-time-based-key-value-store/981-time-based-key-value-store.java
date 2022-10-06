@@ -1,28 +1,28 @@
 class TimeMap {
-    Map<String,String> map;
+    //brute force method 
+    Map<String,HashMap<Integer,String>> map;
     public TimeMap() {
-        map=new HashMap<>();
+        map=new HashMap<String,HashMap<Integer,String>>();
     }
     
     public void set(String key, String value, int timestamp) {
-        String x=key+" "+timestamp;
-        map.put(x,value);
+        if (!map.containsKey(key)) {
+           map.put(key, new HashMap<Integer, String>());
+        }
+        map.get(key).put(timestamp,value);
     }
     
     public String get(String key, int timestamp) {
        
-        String x=key+" "+timestamp;
-        String ret="";
-        while(timestamp>0)
-        {   x=key+" "+timestamp;
-            if(map.containsKey(x))
-            {
-                
-                return map.get(x);
-            }
-            timestamp--;
-        }
-        return ret;
+      if(!map.containsKey(key))
+          return "";
+      int i;
+      for(i=timestamp;i>0;i--)
+      {
+          if(map.get(key).containsKey(i))
+              return map.get(key).get(i);
+      }
+      return "";
     }
 }
 
