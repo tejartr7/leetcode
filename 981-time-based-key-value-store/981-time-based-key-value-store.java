@@ -1,7 +1,7 @@
 class TimeMap {
-    Map<String,String> map=new HashMap<>();
+    Map<String,String> map;
     public TimeMap() {
-        
+        map=new HashMap<>();
     }
     
     public void set(String key, String value, int timestamp) {
