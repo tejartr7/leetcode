@@ -3,29 +3,34 @@ import java.util.Queue;
 
 class Solution {
     public int[] asteroidCollision(int[] a) {
-        Stack<Integer> stack=new Stack<>();
+        Deque<Integer> queue=new ArrayDeque<>();
         int i,n=a.length;
         for(i=0;i<n;i++)
         {
-            if(stack.isEmpty()||a[i]>0)
-            {
-                stack.push(a[i]);
-            }
+            if(queue.isEmpty() || a[i]>0)
+                queue.offerLast(a[i]);
             else
             {
-                while(!stack.isEmpty() && stack.peek()>0 && stack.peek()<Math.abs(a[i]))
-                    stack.pop();
-                if(!stack.isEmpty() && stack.peek()==-a[i])
-                    stack.pop();
-                else if(stack.isEmpty() || stack.peek()<0)
-                    stack.push(a[i]);
+                while(!queue.isEmpty() && queue.peekLast()>0)
+                {
+                    if(queue.peekLast()<Math.abs(a[i]))
+                    {
+                        queue.pollLast();
+                    }
+                    else
+                        break;
+                }
+                if(!queue.isEmpty() && queue.peekLast()==-a[i])
+                    queue.pollLast();
+                else if(queue.isEmpty() || queue.peekLast()<0)
+                    queue.offerLast(a[i]);
             }
         }
-        int arr[]=new int[stack.size()];
-        i=stack.size()-1;
-        while(!stack.isEmpty())
+        int arr[]=new int[queue.size()];
+        i=0;
+        while(!queue.isEmpty())
         {
-            arr[i--]=stack.pop();
+            arr[i++]=queue.pollFirst();
         }
         return arr;
     }
