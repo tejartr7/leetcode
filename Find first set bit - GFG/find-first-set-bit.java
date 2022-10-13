@@ -28,13 +28,16 @@ class Solution
 {
     //Function to find position of first set bit in the given number.
     public static int getFirstSetBit(int n){
-        String bin=Integer.toBinaryString(n);
-        int index=0,i;
-        int len=bin.length();
-        for(i=len-1;i>=0;i--)
+        int index=0;
+        int i=0;
+        int x=n;
+        while(i<32 )
         {
-            if(bin.charAt(i)=='1')
-            return len-i;
+            n=n>>i;
+            if(n%2==1)
+            return i+1;
+            i++;
+            n=x;
         }
         return index;
     }
