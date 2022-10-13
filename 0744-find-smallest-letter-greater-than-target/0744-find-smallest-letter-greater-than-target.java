@@ -3,8 +3,6 @@ class Solution {
         int close=Integer.MAX_VALUE;
         char temp=' ';
         int i,n=l.length;
-        if(target=='z')
-            return l[0];
         for(i=0;i<n;i++)
         {
             if(target==l[i])
