@@ -24,13 +24,12 @@ class Solution {
                 count=1;
             }
         }
-        if(chars.length>=2 && chars[n-1]!=chars[n-2])
+        if(chars[n-1]!=chars[n-2])
         {
             s+="1"+String.valueOf(chars[n-1]);
         }
-        else if(chars.length>=2)
+        else
             s+=count+String.valueOf(chars[n-2]);
-        //System.out.println(s);
         return s;    
     }
 }
