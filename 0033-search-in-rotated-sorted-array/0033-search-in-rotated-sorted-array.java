@@ -20,6 +20,6 @@ public int search(int[] A, int target) {
             }
         }
     }
-    return A[lo] == target ? lo : -1;
+    return A[hi] == target ? hi : -1;
 }
 }
