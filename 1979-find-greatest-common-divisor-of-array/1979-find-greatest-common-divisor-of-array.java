@@ -1,18 +1,19 @@
 class Solution {
-    private long gcd(long a,long b)
+    public int gcd(int a,int b)
     {
         if(b==0)
             return a;
-         else
-             return gcd(b,a%b);
+        return gcd(b,a%b);
     }
     public int findGCD(int[] nums) {
-        Arrays.sort(nums);
-        int l=nums.length;
-        long b =nums[0];
-        long a=nums[l-1];
-        long k=gcd(a,b);
-         
-        return (int)k;
+        int i,n=nums.length;
+        int min=Integer.MAX_VALUE;
+        int max=Integer.MIN_VALUE;
+        for(i=0;i<n;i++)
+        {
+            max=Math.max(nums[i],max);
+            min=Math.min(nums[i],min);
+        }
+        return gcd(max,min);
     }
 }
