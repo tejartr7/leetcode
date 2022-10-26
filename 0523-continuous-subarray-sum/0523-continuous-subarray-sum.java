@@ -13,7 +13,8 @@ class Solution {
             int temp=sum%k;
             if(map.containsKey(temp))
             {
-                if(map.get(temp)<i-1)
+                int x=i-map.get(temp);
+                if(x>1)
                 return true;
             }
             else
