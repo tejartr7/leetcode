@@ -21,39 +21,33 @@ class Solution {
            map.put(words[i],map.getOrDefault(words[i], 0)+1);        
         }
         for(i=0;i<n;i++)
-        {   if(isPalan(words[i]) && map.containsKey(words[i]))
+        {
+            if(isPalan(words[i]))
             {
                 int x=map.get(words[i]);
                 temp+=x/2;
-                if(x%2==0)
-                {
-                    map.remove(words[i]);
-                }
-                else
-                {
-                    map.put(words[i],x%2);
-                }
+                map.put(words[i],x%2);
             }
-            else 
+            else
             {
-                if(map.containsKey(rev(words[i])) && map.containsKey(words[i]))
-                {   if(map.get(rev(words[i]))>0 && map.get(words[i])>0){
-                    ans++;
-                    map.put(rev(words[i]),map.get(rev(words[i]))-1);
-                    map.put(words[i],map.get(words[i])-1);
-                    }
-                    
-                }
+             if(map.containsKey(rev(words[i])))
+             {
+                int min=Math.min(map.get(rev(words[i])),map.get(words[i]));
+                map.put(words[i],map.get(words[i])-min);
+                map.put(rev(words[i]),map.get(rev(words[i]))-min);
+                temp+=min;
+             }
             }
         }
-       for(String x:map.keySet())
-       {
-           if(isPalan(x))
-           {
-               if(map.get(x)>0)
-                   count=1;
-           }
-       }
-        return (temp+ans)*4+count*2;
+        temp*=4;
+        for(String x:map.keySet())
+        {
+            if(isPalan(x) && map.get(x)>0)
+            {
+                temp+=2;
+                break;
+            }
+        } 
+        return temp;
     }
 }
