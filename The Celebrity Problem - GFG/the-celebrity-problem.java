@@ -37,30 +37,42 @@ class Solution
     {
     	// code here 
     	int i,j;
-    	List<Integer> list=new ArrayList<>();
     	int ans=-1;
-    	int count[]=new int[n];
+    	Stack<Integer> stack=new Stack<>();
     	for(i=0;i<n;i++)
     	{
-    	    int c=0;
-    	    for(j=0;j<n;j++)
-    	    {
-    	        if(a[i][j]==1)
-    	        {count[j]++;
-    	        c++;}
-    	    }
-    	    if(c==0)
-    	    list.add(i);
+    	    stack.push(i);
     	}
-    	int c=0;
-    //	System.out.print(list);
-    	for(i=0;i<n;i++)
+    	while(stack.size()>1)
     	{
-    	    if(count[i]==n-1 && list.contains(i))
+    	    int x=stack.pop();
+    	    int y=stack.pop();
+    	    if(a[x][y]==0)
     	    {
-    	        ans=i;
+    	        stack.push(x);
+    	    }
+    	    else if(a[y][x]==0)
+    	    {
+    	        stack.push(y);
     	    }
     	}
-    	return ans;
+    	if(stack.size()==0)
+    	return -1;
+        int x=stack.peek();
+        boolean row=true,col=true;
+        for(j=0;j<n;j++)
+        {
+            if(a[x][j]==1)
+            return -1;
+        }
+        int count=0;
+        for(i=0;i<n;i++)
+        {
+            if(a[i][x]==1)
+            count++;
+        }
+        if(count!=n-1)
+        return -1;
+        return x;
     }
 }
