@@ -39,43 +39,26 @@ class Solution
     	int i,j;
     	List<Integer> list=new ArrayList<>();
     	int ans=-1;
+    	int count[]=new int[n];
     	for(i=0;i<n;i++)
     	{
-    	    int count=0;
-    	    int ind=-1;
+    	    int c=0;
     	    for(j=0;j<n;j++)
     	    {
-    	        if(a[j][i]==1)
-    	        count++;
+    	        if(a[i][j]==1)
+    	        {count[j]++;
+    	        c++;}
     	    }
-    	    if(count==n-1)
+    	    if(c==0)
     	    list.add(i);
     	}
-    	//System.out.println(list);
-    	for(int x:list)
+    	int c=0;
+    //	System.out.print(list);
+    	for(i=0;i<n;i++)
     	{
-    	    boolean found=true;
-    	    int val=-1;
-    	    for(i=0;i<n;i++)
+    	    if(count[i]==n-1 && list.contains(i))
     	    {
-    	        if(a[i][x]==0)
-    	        {
-    	            val=i;
-    	            break;
-    	        }
-    	    }
-    	    for(j=0;j<n;j++)
-    	    {
-    	        if(a[val][j]==1)
-    	        {
-    	            found=false;
-    	            break;
-    	        }
-    	    }
-    	    if(found)
-    	    {
-    	        ans=val;
-    	        return ans;
+    	        ans=i;
     	    }
     	}
     	return ans;
