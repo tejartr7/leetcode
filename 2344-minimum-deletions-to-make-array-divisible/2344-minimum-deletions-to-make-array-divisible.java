@@ -9,7 +9,7 @@ class Solution {
         int c=0;
         if(nums[0]>val) return -1;
         for(int i=0;i<nums.length;i++){
-            if(nums[i]>val) break;
+            //if(nums[i]>val) break;
             if(val%nums[i]!=0) c++;
             else break;
         }
