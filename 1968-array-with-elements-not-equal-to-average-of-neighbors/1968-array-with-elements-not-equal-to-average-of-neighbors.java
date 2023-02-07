@@ -1,21 +1,11 @@
 class Solution {
-    public int[] rearrangeArray(int[] nums) {
-        Arrays.sort(nums);
-        int i=0,j,k=0,n=nums.length;
-        j=n-1;
-        int arr[]=new int[n];
-        while(k<n)
-        {
-            
-            arr[k]=nums[j--];
-            k+=2;
+   public int[] rearrangeArray(int[] A) {
+        Arrays.sort(A);
+        for (int i = 1; i < A.length; i += 2) {
+            int tmp = A[i];
+            A[i] = A[i - 1];
+            A[i - 1] = tmp;
         }
-        k=1;
-        while(k<n)
-        {
-            arr[k]=nums[i++];
-            k+=2;
-        }
-        return arr;
+        return A;
     }
 }
