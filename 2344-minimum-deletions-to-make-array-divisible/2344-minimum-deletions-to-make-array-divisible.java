@@ -1,6 +1,6 @@
 class Solution {
     public int minOperations(int[] nums, int[] numsDivide) {
-        Arrays.sort(numsDivide);
+        //Arrays.sort(numsDivide);
         int val=numsDivide[0];
         for(int i=1;i<numsDivide.length;i++){
             val=gcd(val,numsDivide[i]);
