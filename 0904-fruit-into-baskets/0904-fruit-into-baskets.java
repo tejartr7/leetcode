@@ -14,9 +14,7 @@ class Solution {
                     map.remove(fruits[i]);
                 i++;
             }
-            //System.out.println(set);
-            if(map.size()<=2)
-                ans=Math.max(ans,j-i+1);
+            ans=Math.max(ans,j-i+1);
             j++;
         }
         return ans;
