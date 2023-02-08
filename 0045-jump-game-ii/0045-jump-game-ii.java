@@ -1,25 +1,21 @@
 class Solution {
-    public int helper(int nums[],int index,int dp[])
-    {
-        if(index>=nums.length-1)
-            return 0;
-        if(dp[index]!=-1)
-            return dp[index];
-        int x=nums[index];
-       // int k=index;
-        int ans=100000;
-        for(int i=1;i<=x;i++)
-        {
-            int temp=1+helper(nums,index+i,dp);
-            ans=Math.min(temp,ans);
-        }
-        dp[index]=ans;
-        return dp[index];
-    }
     public int jump(int[] nums) {
-        int i,n=nums.length;
-        int dp[]=new int[n+1];
-        Arrays.fill(dp,-1);
-        return helper(nums,0,dp);
+        // The starting range of the first jump is [0, 0]
+        int answer = 0, n = nums.length;
+        int curEnd = 0, curFar = 0;
+        
+        for (int i = 0; i < n - 1; ++i) {
+            // Update the farthest reachable index of this jump.
+            curFar = Math.max(curFar, i + nums[i]);
+
+            // If we finish the starting range of this jump,
+            // Move on to the starting range of the next jump.
+            if (i == curEnd) {
+                answer++;
+                curEnd = curFar;
+            }
+        }
+        
+        return answer;
     }
 }
