@@ -1,13 +1,13 @@
 class Solution {
     public int numTrees(int n) {
-        int ans=0;
-        int i;
-        if(n==1 || n==0)
-            return 1;
-        for(i=1;i<=n;i++)
-        {
-            ans+=numTrees(i-1)*numTrees(n-i);
-        }
-        return ans;
+  int [] G = new int[n+1];
+  G[0] = G[1] = 1;
+    
+  for(int i=2; i<=n; ++i) {
+    for(int j=1; j<=i; ++j) {
+      G[i] += G[j-1] * G[i-j];
     }
+  }
+  return G[n];
+}
 }
