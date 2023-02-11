@@ -9,6 +9,8 @@
  * }
  */
 class Solution {
+    //this function returns the mid and also make the linkedlist two parts
+    //the node previous to mid points to null after we find the mid
     public ListNode getMid(ListNode head) {
         ListNode slow = head, fast = head;
         ListNode prev=null;
@@ -21,7 +23,7 @@ class Solution {
         prev.next=null;
         return slow;
     }
-
+    //this function merges two sorted linked lists
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode a = new ListNode(-1);
         ListNode curr = a;
@@ -52,7 +54,7 @@ class Solution {
         }
         return a.next;
     }
-
+    //this is our base function
     public ListNode sortList(ListNode head) {
         if(head==null || head.next==null) return head;
         ListNode mid = getMid(head);
