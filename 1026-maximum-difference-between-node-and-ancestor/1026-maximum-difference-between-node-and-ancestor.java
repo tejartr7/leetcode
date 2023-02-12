@@ -14,19 +14,20 @@
  * }
  */
 class Solution {
-    int ans=0;
-    public void inorder(TreeNode root,int maxi,int mini)
+    public void inorder(TreeNode root,int maxi,int mini,int ans[])
     {
         if(root==null) return ;
         if(maxi!=Integer.MIN_VALUE)
-            ans=Math.max(ans,Math.abs(root.val-maxi));
+            ans[0]=Math.max(ans[0],Math.abs(root.val-maxi));
         if(mini!=Integer.MAX_VALUE)
-            ans=Math.max(ans,Math.abs(root.val-mini));
-        inorder(root.left,Math.max(maxi,root.val),Math.min(mini,root.val));
-        inorder(root.right,Math.max(maxi,root.val),Math.min(mini,root.val));
+            ans[0]=Math.max(ans[0],Math.abs(root.val-mini));
+        inorder(root.left,Math.max(maxi,root.val),Math.min(mini,root.val),ans);
+        inorder(root.right,Math.max(maxi,root.val),Math.min(mini,root.val),ans);
     }
     public int maxAncestorDiff(TreeNode root) {
-        inorder(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
-        return ans;
+        int ans[]=new int[1];
+        ans[0]=0;
+        inorder(root,Integer.MIN_VALUE,Integer.MAX_VALUE,ans);
+        return ans[0];
     }
 }
