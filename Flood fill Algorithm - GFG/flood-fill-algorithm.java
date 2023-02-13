@@ -36,6 +36,16 @@ class GFG
 
 // } Driver Code Ends
 
+class pair
+{
+    int row;
+    int col;
+    pair(int row,int col)
+    {
+        this.row=row;
+        this.col=col;
+    }
+}
 
 class Solution
 {
@@ -43,34 +53,49 @@ class Solution
     {
         return i>=0 && i<m && j>=0 && j<n;
     }
-    public void dfs(int row,int col,int prev,int newColor,int image[][],int ans[][])
+    public void dfs(int r,int c,int prev,int newColor,int ans[][])
     {
-        ans[row][col]=newColor;
+        ans[r][c]=newColor;
         int m=ans.length,n=ans[0].length;
         int i,j;
+        Queue<pair> q=new LinkedList<>();
+        q.offer(new pair(r,c));
+        while(!q.isEmpty()){
+        pair top=q.poll();
+        int row=top.row;
+        int col=top.col;
         if(isValid(row+1,col,m,n))
         {
-            if(image[row+1][col]==prev && ans[row+1][col]!=newColor){
-                dfs(row+1,col,prev,newColor,image,ans);
+            if(ans[row+1][col]==prev && ans[row+1][col]!=newColor)
+            {
+                ans[row+1][col]=newColor;
+                q.offer(new pair(row+1,col));
             }
         }
         if(isValid(row-1,col,m,n))
         {
-            if(image[row-1][col]==prev && ans[row-1][col]!=newColor){
-                dfs(row-1,col,prev,newColor,image,ans);
+            if(ans[row-1][col]==prev && ans[row-1][col]!=newColor)
+            {
+                ans[row-1][col]=newColor;
+                q.offer(new pair(row-1,col));
             }
         }
         if(isValid(row,col+1,m,n))
         {
-            if(image[row][col+1]==prev && ans[row][col+1]!=newColor){
-                dfs(row,col+1,prev,newColor,image,ans);
+            if(ans[row][col+1]==prev && ans[row][col+1]!=newColor)
+            {
+                ans[row][col+1]=newColor;
+                q.offer(new pair(row,col+1));
             }
         }
         if(isValid(row,col-1,m,n))
         {
-            if(image[row][col-1]==prev && ans[row][col-1]!=newColor){
-                dfs(row,col-1,prev,newColor,image,ans);
+           if(ans[row][col-1]==prev && ans[row][col-1]!=newColor)
+            {
+                ans[row][col-1]=newColor;
+                q.offer(new pair(row,col-1));
             }
+        }
         }
     }
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor)
@@ -80,7 +105,7 @@ class Solution
         int m=image.length,n=image[0].length;
         int ans[][]=new int[m][n];
         ans=image;
-        dfs(sr,sc,prev,newColor,image,ans);
-        return ans;
+        dfs(sr,sc,prev,newColor,image);
+        return image;
     }
 }
