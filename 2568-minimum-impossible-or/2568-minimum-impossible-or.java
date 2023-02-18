@@ -5,7 +5,7 @@ class Solution {
         int ans=1;
         while(set.contains(ans))
         {
-            ans=(ans<<1);
+            ans<<=1;
         }
         return ans;
     }
