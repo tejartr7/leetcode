@@ -25,22 +25,26 @@ class Solution {
         {
             int n=ans.length();
             Pair top=pq.poll();
-            if(n>1 && ans.charAt(n-1)==ans.charAt(n-2) && ans.charAt(n-1)==top.x)
+            char ch=top.x;
+            int count=top.y;
+            if(n>1 && ans.charAt(n-1)==ans.charAt(n-2) && ans.charAt(n-1)==ch)
             {
                 if(pq.size()==0) break;
                 Pair top2=pq.poll();
-                ans+=top2.x;
-                top2.y--;
-                if(top2.y>0)
-                pq.offer(top2);
+                char ch2=top2.x;
+                int count2=top2.y;
+                ans+=ch2;
+                count2--;
+                if(count2>0)
+                pq.offer(new Pair(ch2,count2));
             }
             else
             {
-                ans+=top.x;
-                top.y--;
+                ans+=ch;
+                count--;
             }
-            if(top.y>0)
-                pq.offer(top);
+            if(count>0)
+                pq.offer(new Pair(ch,count));
         }
         return ans;
     }
