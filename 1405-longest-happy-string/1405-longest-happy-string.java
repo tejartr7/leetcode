@@ -37,7 +37,7 @@ class Solution {
                     Pair nextPair = maxHeap.poll();
                     answer.append(nextPair.x);
                     nextPair.y--;
-                    if(nextPair.y != 0) {
+                    if(nextPair.y > 0) {
                         maxHeap.offer(nextPair);
                     }
                 }
@@ -45,7 +45,7 @@ class Solution {
                 answer.append(pair.x);
                 pair.y--;
             }
-            if(pair.y != 0) {
+            if(pair.y > 0) {
                 maxHeap.offer(pair);
             }
         }
