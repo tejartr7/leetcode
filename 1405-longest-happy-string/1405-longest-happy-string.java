@@ -18,13 +18,13 @@ class Solution {
     public String longestDiverseString(int a, int b, int c) {
         PriorityQueue<Pair> maxHeap = new PriorityQueue<>(new PairComparator());
         StringBuilder answer = new StringBuilder();
-        if(a != 0) {
+        if(a >0) {
             maxHeap.offer(new Pair('a',a));
         }
-        if(b != 0) {
+        if(b > 0) {
             maxHeap.offer(new Pair('b',b));
         }
-        if(c != 0) {
+        if(c > 0) {
             maxHeap.offer(new Pair('c',c));
         }
         while(!maxHeap.isEmpty()) {
