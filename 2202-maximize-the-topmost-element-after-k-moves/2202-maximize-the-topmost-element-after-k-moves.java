@@ -6,26 +6,12 @@ class Solution {
         Arrays.fill(visited,false);
         boolean flag=false;
         if(n==1) return k%2==0?nums[0]:-1;
-        for(i=0;i<n;i++)
+        for(i=0;i<Math.min(n,k-1);i++)
         {
-            if(k-i-1>0)
-            {
-                visited[i]=true;
-                flag=true;
-            }
-            else if(k==i && k!=n)
-            {
-                visited[i]=true;
-                flag=true;
-            }
+            maxi=Math.max(maxi,nums[i]);   
         }
-        for(i=0;i<n;i++)
-        {
-            if(visited[i])
-            {
-                maxi=Math.max(maxi,nums[i]);
-            }
-        }
-        return flag?maxi:-1;
+        if(k<n)
+            maxi=Math.max(maxi,nums[k]);
+        return maxi;
     }
 }
