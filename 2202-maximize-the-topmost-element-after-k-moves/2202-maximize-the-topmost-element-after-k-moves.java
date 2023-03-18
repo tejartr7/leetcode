@@ -5,8 +5,7 @@ class Solution {
         boolean visited[]=new boolean[n];
         Arrays.fill(visited,false);
         boolean flag=false;
-        if(n==1 && k%2==1) return -1;
-        else if(n==1 && k%2==0) return nums[0];
+        if(n==1) return k%2==0?nums[0]:-1;
         for(i=0;i<n;i++)
         {
             if(k-i-1>0)
