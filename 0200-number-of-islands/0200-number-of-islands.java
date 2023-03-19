@@ -13,49 +13,17 @@ class Solution {
     {
         return i>=0 && i<m && j>=0 && j<n;
     }
-    public void bfs(int r,int c,char [][]grid,boolean visited[][])
+    public void dfs(int i,int j,char [][]grid,boolean visited[][])
     {
-        visited[r][c]=true;
-        Queue<pair> q=new LinkedList<>();
         int m=grid.length,n=grid[0].length;
-        q.offer(new pair(r,c));
-        while(!q.isEmpty())
+        if(!isValid(i,j,m,n) || visited[i][j]) return ;
+        visited[i][j]=true;
+        if(grid[i][j]=='1')
         {
-            pair top=q.poll();
-            int row=top.row;
-            int col=top.col;
-            if(isValid(row-1,col,m,n))
-            {
-                if(grid[row-1][col]=='1' &&!visited[row-1][col])
-                {
-                    visited[row-1][col]=true;
-                    q.offer(new pair(row-1,col));
-                }
-            }
-            if(isValid(row+1,col,m,n))
-            {
-                if(grid[row+1][col]=='1' &&!visited[row+1][col])
-                {
-                    visited[row+1][col]=true;
-                    q.offer(new pair(row+1,col));
-                }
-            }
-            if(isValid(row,col-1,m,n))
-            {
-                if(grid[row][col-1]=='1' &&!visited[row][col-1])
-                {
-                    visited[row][col-1]=true;
-                    q.offer(new pair(row,col-1));
-                }
-            }
-            if(isValid(row,col+1,m,n))
-            {
-                if(grid[row][col+1]=='1' &&!visited[row][col+1])
-                {
-                    visited[row][col+1]=true;
-                    q.offer(new pair(row,col+1));
-                }
-            }
+            dfs(i+1,j,grid,visited);
+            dfs(i-1,j,grid,visited);
+            dfs(i,j-1,grid,visited);
+            dfs(i,j+1,grid,visited);
         }
     }
     public int numIslands(char[][] grid) {
@@ -69,7 +37,7 @@ class Solution {
                 if(!visited[i][j] && grid[i][j]=='1')
                 {
                     count++;
-                    bfs(i,j,grid,visited);
+                    dfs(i,j,grid,visited);
                 }
             }
         }
