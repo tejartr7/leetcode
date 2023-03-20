@@ -1,0 +1,13 @@
+class Solution {
+    public int distMoney(int m, int c) {
+        m-=c;
+        if(m<0) return -1;
+        if(m/7==c && m%7==0)
+            return c;
+        if(m/7==c-1 && m%7==3)
+        {
+            return c-2;
+        }
+        else return Math.min(c-1,m/7);
+    }
+}
