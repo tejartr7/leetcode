@@ -8,9 +8,7 @@ class Solution {
         long sum[]=new long[n];
         sum[0]=nums[0];
         for(i=1;i<n;i++)
-        {
             sum[i]=sum[i-1]+nums[i];
-        }
         Stack<Integer> stack=new Stack<>();
         stack.push(-1);
         pre[0]=-1;
@@ -37,7 +35,6 @@ class Solution {
         {
             long x=pre[i]==-1?0:sum[pre[i]];
             long y=suff[i]==n?sum[n-1]:sum[suff[i]]-(long)nums[suff[i]];
-            //System.out.println(x+" "+y);
             ans=Math.max(ans,((y-x)*(long)nums[i]));
         }
         return (int)(ans%mod);
