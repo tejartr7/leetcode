@@ -38,9 +38,13 @@ class Solution {
         boolean found=false;
         for(i=n-2;i>=0;i--)
         {
-            if(helper(nums,i))
-            {found=true;
-            break;
+            if(nums[i]<nums[i+1])
+            {
+                if(helper(nums,i))
+                {
+                    found=true;
+                    break;
+                }
             }
         }
         if(!found)
