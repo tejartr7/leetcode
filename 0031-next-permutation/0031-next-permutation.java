@@ -1,5 +1,5 @@
 class Solution {
-    public List<Integer> helper(int []nums,int i)
+    public boolean helper(int []nums,int i)
     {
         int curr=nums[i];
         int max=0;
@@ -21,7 +21,7 @@ class Solution {
             list.add(nums[j]);
         }
         if(index==-1)
-            return new ArrayList<>();
+            return false;
         list.remove(index);
         Collections.sort(list);
         nums[i]=max;
@@ -30,7 +30,7 @@ class Solution {
         {
             nums[i+j]=list.get(j);
         }
-        return list;
+        return true;
     }
     public void nextPermutation(int[] nums) {
         int first_max=0,second_max=0;
@@ -38,12 +38,10 @@ class Solution {
         boolean found=false;
         for(i=n-2;i>=0;i--)
         {
-            List<Integer> list=helper(nums,i);
-            //System.out.println(list);
-            if(list.size()==0)
-                continue;
-            found=true;
+            if(helper(nums,i))
+            {found=true;
             break;
+            }
         }
         if(!found)
             Arrays.sort(nums);
