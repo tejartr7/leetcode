@@ -11,9 +11,7 @@ class Solution {
             sum[i]=sum[i-1]+nums[i];
         Stack<Integer> stack=new Stack<>();
         stack.push(-1);
-        pre[0]=-1;
-        stack.push(0);
-        for(i=1;i<n;i++)
+        for(i=0;i<n;i++)
         {
             while(stack.peek()!=-1 && nums[stack.peek()]>=nums[i])
                 stack.pop();
@@ -22,9 +20,7 @@ class Solution {
         }
         stack.clear();
         stack.push(n);
-        suff[n-1]=n;
-        stack.push(n-1);
-        for(i=n-2;i>=0;i--)
+        for(i=n-1;i>=0;i--)
         {
             while(stack.peek()!=n && nums[stack.peek()]>=nums[i])
                 stack.pop();
