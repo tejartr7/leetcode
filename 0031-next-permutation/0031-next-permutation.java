@@ -1,53 +1,41 @@
 class Solution {
-    public boolean helper(int []nums,int i)
+    public void swap(int nums[],int i,int j)
     {
-        int curr=nums[i];
-        int max=0;
-        boolean flag=false;
-        List<Integer> list=new ArrayList<>();
-        int index=-1;
-        for(int j=i;j<nums.length;j++)
-        {
-            if(nums[j]>nums[i])
-            {
-                if(max>nums[j])
-                { max=nums[j];
-                index=j-i;
-                }
-                else if(max==0)
-                { max=nums[j];
-                 index=j-i;}
-            }
-            list.add(nums[j]);
-        }
-        if(index==-1)
-            return false;
-        list.remove(index);
-        Collections.sort(list);
-        nums[i]=max;
-        i++;
-        for(int j=0;j<list.size();j++)
-        {
-            nums[i+j]=list.get(j);
-        }
-        return true;
+        int temp=nums[i];
+        nums[i]=nums[j];
+        nums[j]=temp;
     }
     public void nextPermutation(int[] nums) {
         int first_max=0,second_max=0;
         int i,j,n=nums.length;
-        boolean found=false;
+        int index=-1;
         for(i=n-2;i>=0;i--)
         {
             if(nums[i]<nums[i+1])
             {
-                if(helper(nums,i))
+                index=i;
+                break;
+            }
+        }
+        if(index==-1)
+            Arrays.sort(nums);
+        else
+        {
+            for(i=n-1;i>index;i--)
+            {
+                if(nums[i]>nums[index])
                 {
-                    found=true;
+                    swap(nums,i,index);
                     break;
                 }
             }
+            int x=index+1,y=n-1;
+            while(x<y)
+            {
+                swap(nums,x,y);
+                x++;
+                y--;
+            }
         }
-        if(!found)
-            Arrays.sort(nums);
     }
 }
