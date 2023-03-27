@@ -8,4 +8,4 @@
 <br>
 # if my solution helped you just star this repo and follow me 
 <br>
-<button><a src="https://github.com/sponsors/tejartr7/button" title="Sponsor tejartr7" height="32" width="114" style="border: 0; border-radius: 6px;">sponser me</a></button>
+<button><a href="https://github.com/sponsors/tejartr7/button" title="Sponsor tejartr7" height="32" width="114" style="border: 0; border-radius: 6px;">sponser me</a></button>
