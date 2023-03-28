@@ -1,38 +1,23 @@
 class Solution {
-    public int maxSumMinProduct(int[] nums) {
-        long ans=0;
-        long mod=1000_000_007;
-        int i,n=nums.length;
-        int pre[]=new int[n];
-        int suff[]=new int[n];
-        long sum[]=new long[n];
-        sum[0]=nums[0];
-        for(i=1;i<n;i++)
-            sum[i]=sum[i-1]+nums[i];
-        Stack<Integer> stack=new Stack<>();
-        stack.push(-1);
-        for(i=0;i<n;i++)
-        {
-            while(stack.peek()!=-1 && nums[stack.peek()]>=nums[i])
-                stack.pop();
-            pre[i]=stack.peek();
-            stack.push(i);
-        }
-        stack.clear();
-        stack.push(n);
-        for(i=n-1;i>=0;i--)
-        {
-            while(stack.peek()!=n && nums[stack.peek()]>=nums[i])
-                stack.pop();
-            suff[i]=stack.peek();
-            stack.push(i);
-        }
-        for(i=0;i<n;i++)
-        {
-            long x=pre[i]==-1?0:sum[pre[i]];
-            long y=suff[i]==n?sum[n-1]:sum[suff[i]]-(long)nums[suff[i]];
-            ans=Math.max(ans,((y-x)*(long)nums[i]));
-        }
-        return (int)(ans%mod);
+    public int maxSumMinProduct(int[] a) {
+        int n = a.length, M = 1_000_000_007;
+        long res = 0L;
+
+        //step 1; get prefixs um
+        long [] psum = new long[n + 1];
+        for(int i = 0; i < n; i++) psum[i+1] = psum[i] + a[i];
+
+        //step 2: get the left and right bound of each sub-array using mono deceasing & increasing stack
+        int[] s = new int[n];
+        int top = -1; // mono-decreasing for right bound
+        for (int i = 0; i <= n; s[++top] = i++)
+            while (top >= 0 && (i == n || a[i] < a[s[top]])) {
+                int min = a[s[top--]]; // get curMin value and poll current index out of stack, it's left and right bouldary is not determined
+                int l = top == -1 ? 0 : s[top] + 1; // use the prev idx to get left bound, inclusive
+                int r = i - 1; // right bound, inclusive
+                res = Math.max(res, min * (psum[r+1] - psum[l]));
+            }
+
+        return (int) (res % M);
     }
 }
