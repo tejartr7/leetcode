@@ -1,10 +1,10 @@
 class Solution {
    
     public List<List<Integer>> getAncestors(int n, int[][] edges) {
-        Map<Integer,TreeSet<Integer>> map=new HashMap<>();
+        Map<Integer,List<Integer>> map=new HashMap<>();
         int i;
         for(i=0;i<n;i++)
-            map.put(i,new TreeSet<>());
+            map.put(i,new ArrayList<>());
         int l=edges.length;
         int indegree[]=new int[n];
         for(i=0;i<l;i++)
@@ -14,11 +14,11 @@ class Solution {
         }
         //System.out.println(map);
         Queue<Integer> q=new LinkedList<>();
-        List<TreeSet<Integer>> list=new ArrayList<>();
+        List<Set<Integer>> list=new ArrayList<>();
         List<List<Integer>> temp=new ArrayList<>();
         for(i=0;i<n;i++)
         {
-            list.add(i,new TreeSet<>());
+            list.add(i,new HashSet<>());
             temp.add(i,new ArrayList<>());
             if(indegree[i]==0)
                 q.offer(i);
@@ -48,6 +48,7 @@ class Solution {
                     if(!temp.get(i).contains(x))
                         temp.get(i).add(x);
                 }
+                Collections.sort(temp.get(i));
             }
         }
         return temp;
