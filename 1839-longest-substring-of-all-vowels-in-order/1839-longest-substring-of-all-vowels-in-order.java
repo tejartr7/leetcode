@@ -2,7 +2,7 @@ class Solution {
     public int check(int start,int end,String word)
     {
         String s=word.substring(Math.max(start,0),end);
-        System.out.println(s);
+        //System.out.println(s);
         if(!s.contains("a") ||!s.contains("e") ||!s.contains("i") ||!s.contains("o") ||!s.contains("u"))
             return -1;
         int len=0;
