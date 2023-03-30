@@ -7,7 +7,7 @@ class Solution {
         while(j<n)
         {
             sum+=nums[j];
-            while(nums[j]*(j-i+1)-sum>k)
+            while(i<n && k<nums[j]*(j-i+1)-sum)
             {
                 sum-=nums[i];
                 i++;
