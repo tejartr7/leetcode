@@ -1,31 +1,19 @@
 class Solution {
-    public void helper(int nums[],int index,List<List<Integer>> rtr,List<Integer> list)
-    {
-        rtr.add(new ArrayList<>(list));
-        for(int i=index;i<nums.length;i++)
-        {
-            list.add(nums[i]);
-            helper(nums,i+1,rtr,list);
-            list.remove(list.size()-1);
-        }
-    }
     public int countMaxOrSubsets(int[] nums) {
-        int maxi=0;
-        for(int x:nums)
-            maxi|=x;
-        int ans=0;
-        List<List<Integer>> rtr=new ArrayList<>();
-        helper(nums,0,rtr,new ArrayList<>());
-        for(List<Integer> l:rtr)
-        {
-            int curr=0;
-            for(int x:l)
-            {
-                curr|=x;
-            }
-            if(curr==maxi)
-                ans++;
+        int res[]= new int[1];
+        int target = 0;
+        res[0]=0;
+        for (int num : nums)
+            target |= num;
+        dfs(nums, res,0, 0,target);
+        return res[0];
+    }
+    public void dfs(int[] nums, int res[],int idx,int mask,int target) {
+        if (mask == target) {
+            res[0]++;
         }
-        return ans;
+        
+        for (int i = idx; i < nums.length; i++)
+            dfs(nums, res,i + 1, mask | nums[i],target);
     }
 }
