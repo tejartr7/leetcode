@@ -6,7 +6,7 @@ class Solution {
         int i,n=s.length();
         for(i=0;i<n;i++)
         {
-            if(s.charAt(i)=='(' || stack.size()==1)
+            if(s.charAt(i)=='(')
                 stack.push(i);
             else
             {
