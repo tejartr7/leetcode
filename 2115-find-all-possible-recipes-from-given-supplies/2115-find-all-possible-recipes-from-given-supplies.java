@@ -1,24 +1,26 @@
 class Solution {
     public List<String> findAllRecipes(String[] recipes, List<List<String>> ingredients, String[] supplies) {
         Set<String> supply=new HashSet<>();
-       
-        for(int i = 0; i < supplies.length; i++)
-            supply.add(supplies[i]);
+        for(String x:supplies)
+            supply.add(x);
         List<String> res=new ArrayList<>();
-        boolean found=true;
-        while(found){
-        found=false;
+        int count=0;
+        while(count<100){
+        boolean found=false;
         for(int i=0;i<recipes.length;i++)
         {
+            boolean flag=true;
             if(supply.contains(recipes[i]))
                 continue;
-            boolean flag=true;
-            for(int j=0;j<ingredients.get(i).size();j++)
+            for(String curr:ingredients.get(i))
             {
-                if(!supply.contains(ingredients.get(i).get(j)))
+                if(!supply.contains(curr))
                 {
+                    if(res.contains(curr))
+                       { 
+                        continue;
+                       }
                     flag=false;
-                    break;
                 }
             }
             if(flag)
@@ -27,7 +29,9 @@ class Solution {
              found=true;
              supply.add(recipes[i]);
             }
-          }
+        }
+        if(!found) break;
+        count++;
         }
         return res;
     }
