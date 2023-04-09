@@ -19,7 +19,7 @@ class Solution {
                 if(i==j)
                     matrix[i][j]=0;
                 else if(matrix[i][j]==-1)
-                    matrix[i][j]=100000000;
+                    matrix[i][j]=1000000;
             }
         }
         for(k=0;k<n;k++)
