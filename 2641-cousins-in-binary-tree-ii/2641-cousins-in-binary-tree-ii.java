@@ -34,7 +34,7 @@ class Solution {
             }
             list.add(sum);
         }
-        System.out.println(list);
+        //System.out.println(list);
         int level=0;
         Queue<Pair> ans=new LinkedList<>();
         ans.offer(new Pair(root,null));
