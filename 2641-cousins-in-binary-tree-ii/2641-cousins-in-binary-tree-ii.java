@@ -12,36 +12,52 @@ class Solution {
     public TreeNode replaceValueInTree(TreeNode root) {
         // same depth diff parent
         List<Integer> list=new ArrayList<>();
-        Queue<Pair> q=new LinkedList<>();
-        q.offer(new Pair(root,null));
-        int lastLevelChildSum=0;
-        int currLevelChildSum=0;
-        Map<TreeNode, Integer> map = new HashMap<>();   
+        Map<TreeNode,Integer> map=new HashMap<>();
+        Queue<TreeNode> q=new LinkedList<>();
+        q.offer(root);
         while(!q.isEmpty())
         {
-            lastLevelChildSum=currLevelChildSum;
-            currLevelChildSum=0;
+            int sum=0;
             int n=q.size();
-            while(n-->0)
+            for(int i=0;i<n;i++)
             {
-                int childSumOfNodes=0;
-                Pair top=q.poll();
+                TreeNode node=q.poll();
+                sum+=node.val;
+                int x=0;
+                if(node.left!=null)
+                    {x+=node.left.val;
+                    q.offer(node.left);}
+                if(node.right!=null)
+                    {x+=node.right.val;
+                    q.offer(node.right);}
+                map.put(node,x);
+            }
+            list.add(sum);
+        }
+        System.out.println(list);
+        int level=0;
+        Queue<Pair> ans=new LinkedList<>();
+        ans.offer(new Pair(root,null));
+        while(!ans.isEmpty())
+        {
+            int n=ans.size();
+            for(int i=0;i<n;i++)
+            {
+                Pair top=ans.poll();
                 TreeNode node=top.node;
                 TreeNode parent=top.parent;
-                if(node.right!=null)
-                {
-                    q.offer(new Pair(node.right,node));
-                    childSumOfNodes+=node.right.val;
-                }
+                int x=node.val;
+                node.val=list.get(level)-map.getOrDefault(parent,x);
                 if(node.left!=null)
                 {
-                    q.offer(new Pair(node.left,node));
-                    childSumOfNodes+=node.left.val;
+                   ans.offer(new Pair(node.left,node));
                 }
-                map.put(node,childSumOfNodes);
-                currLevelChildSum+=childSumOfNodes;
-                node.val=lastLevelChildSum-map.getOrDefault(parent,0);
+                if(node.right!=null)
+                {
+                    ans.offer(new Pair(node.right,node));
+                }
             }
+            level++;
         }
         return root;
     }
