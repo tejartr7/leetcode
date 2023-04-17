@@ -18,21 +18,17 @@ class Solution {
            for(i=0;i<n;i++)
            {
                if(indegree[i]==0)
-               {q.add(i);
-                topo.add(i);
-               }
+                   q.offer(i);
            }
            while(!q.isEmpty())
            {
-               int top=q.poll();
-               for(int x:list.get(top))
+               int x=q.poll();
+               topo.add(x);
+               for(int temp:list.get(x))
                {
-                   indegree[x]--;
-                   if(indegree[x]==0)
-                   {
-                       q.offer(x);
-                       topo.add(i);
-                   }
+                   indegree[temp]--;
+                   if(indegree[temp]==0)
+                       q.offer(temp);
                }
            }
            return topo.size()==n;
