@@ -13,41 +13,50 @@
  *     }
  * }
  */
+class pair
+{
+    TreeNode node;
+    int index;
+    pair(TreeNode node,int index)
+    {
+        this.node=node;
+        this.index=index;
+    }
+}
 class Solution {
-    public void helper(TreeNode root,int index)
+    void inorder(TreeNode root,int i)
     {
         if(root==null)
         return ;
-        root.val=index;
-        helper(root.left,2*index+1);
-        helper(root.right,2*index+2);
+        root.val=i;
+        inorder(root.left,2*i+1);
+        inorder(root.right,2*i+2);
     }
     public int widthOfBinaryTree(TreeNode root) {
-        helper(root,0);
-        int maxi=0;
-        if(root==null)
-        return 0;
-        Queue<TreeNode> q=new LinkedList<>();
-        q.offer(root);
-        List<Integer> list=new ArrayList<>();
-        list.add(root.val);
+        int max=1;
+        Queue<pair> q=new LinkedList<pair>();
+        q.add(new pair(root,0));
         while(!q.isEmpty())
         {
-            int i,n=q.size();
+            int f=0,l=0;
+            int i;
+            int min=q.peek().index;
+            int n=q.size();
             for(i=0;i<n;i++)
-            {
-                TreeNode x=q.poll();
-                if(x.left!=null)
-                q.add(x.left);
-                if(x.right!=null)
-                q.add(x.right);
-                list.add(x.val);
+            {   
+                int curr=q.peek().index-min;
+                if(i==0)
+                f=q.peek().index;
+                if(i==n-1)
+                l=q.peek().index;
+                if(q.peek().node.left!=null)
+                q.offer(new pair(q.peek().node.left,curr*2+1));
+                if(q.peek().node.right!=null)
+                q.offer(new pair(q.peek().node.right,curr*2+2));
+                q.poll();
             }
-            //Collections.sort(list);
-            maxi=Math.max(maxi,list.get(list.size()-1)-list.get(0)+1);
-            System.out.println(list);
-            list.clear();
+            max=Math.max(max,l-f+1);
         }
-        return maxi;
+        return max;
     }
 }
