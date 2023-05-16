@@ -14,7 +14,7 @@ class Solution {
         //List<ListNode> list=new ArrayList<>();
         if(head==null || head.next==null)
             return head;
-        ListNode prev=head,curr=head.next;
+        //ListNode prev=head,curr=head.next;
         ListNode next=head.next;
         head.next=swapPairs(head.next.next);
         next.next=head;
