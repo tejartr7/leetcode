@@ -1,6 +1,6 @@
 class Solution {
     public List<Integer> findSmallestSetOfVertices(int n, List<List<Integer>> edges) {
-        Set<Integer> visited=new HashSet<>();
+        //Set<Integer> visited=new HashSet<>();
         List<Integer> list=new ArrayList<>();
         int i;
         Map<Integer,List<Integer>> map=new HashMap<>();
