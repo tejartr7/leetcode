@@ -36,41 +36,77 @@ class GFG{
 // } Driver Code Ends
 
 
-
 class Solution {
-    public static ArrayList<Integer> kthSmallestNum(int n, int[][] r, int qn, int[] q) {
-       ArrayList<Integer> res = new ArrayList<>();
-       Arrays.sort(r, (a, b)->a[0] != b[0] ? a[0]-b[0]: b[1]-a[1]);
-    
-       for(int quer : q){
-           int temp = util(r, quer);
-            res.add(temp);
+    public static int[][] overlappedInterval(int[][] intervals)
+    {
+        // Code here // Code here
+       Arrays.sort(intervals,(a,b)->a[0]-b[0]);
+       ArrayList<int[]> res=new ArrayList<>();
+       int i,j=0,n=intervals.length;
+       res.add(intervals[0]);
+       for(i=1;i<n;i++)
+       {
+           int []x=res.get(j);
+           if(intervals[i][0]<=x[1] || intervals[i][1]+1==x[1])
+           {
+               x[1]=Math.max(x[1],intervals[i][1]);
+           }
+           else
+           {
+               res.add(intervals[i]);
+               j++;
+               
+           }
        }
-       return res;
-       
+       int ans[][]=new int[j+1][2];
+       for(i=0;i<=j;i++)
+       ans[i]=res.get(i);
+       return ans;
     }
-    public static int util(int[][] range, int k) {
-        int i = 1;
-        if(k <= range[0][1]-range[0][0]+1) return  range[0][0]+k-1;
-        k = k-(range[0][1]-range[0][0]+1);
-        int prevEnd = range[0][1];
-        while(i<range.length){
-            // System.out.println(prevEnd+" "+k);
-            if(prevEnd < range[i][0]){
-                prevEnd  = range[i][0];
-            }else{
-                prevEnd++;
+    public static ArrayList<Integer> kthSmallestNum(int n, int[][] range, int q, int[] queries) {
+        // code here
+        int merge[][]=overlappedInterval(range);
+        ArrayList<Integer> ans=new ArrayList<>();
+        //Arrays.fill(ans,-1);
+        int i,j;
+        int l=merge.length;
+        for(i=0;i<q;i++)
+        {
+            int x=queries[i];
+            for(j=0;j<l;j++)
+            {
+                int curr=merge[j][1]-merge[j][0]+1;
+                if(x<=curr)
+                {
+                    // int val=bin(x,merge[j][0],merge[j][1]);
+                    int val=merge[j][0]+x-1;
+                    ans.add(val);
+                    x-=curr;
+                    break;
+                }
+                else x-=curr;
             }
-                    if(k <= range[i][1]-prevEnd+1){
-                        return prevEnd+k-1;
-                    }else{
-                        k = k-(range[i][1]-prevEnd+1);
-                    }
-            prevEnd  = range[i][1];
-            i++;
+            if(x>0)
+            {
+                ans.add(-1);
+            }
         }
-        return -1;
-       
+        return ans;
     }
+    // public static int bin(int target,int start,int end)
+    // {
+    //     int s=start;
+    //     int l=0,h=end-start;
+    //     while(l<h)
+    //     {
+    //         int mid=l+(h-l)/2;
+    //         if(mid==target-1) return mid+s;
+    //         else if(mid>target-1)
+    //         {
+    //             h=mid;
+    //         }
+    //         else l=mid-1;
+    //     }
+    //     return -1;
+    // }
 } 
-      
