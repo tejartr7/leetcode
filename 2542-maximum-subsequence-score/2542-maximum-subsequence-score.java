@@ -1,26 +1,25 @@
 class Solution {
-        public long maxScore(int[] s, int[] e, int k) {
-        int n=s.length;
+    public long maxScore(int[] nums1, int[] nums2, int k) {
+        int i,j,n=nums1.length;
         int dp[][]=new int[n][2];
-        int i;
         for(i=0;i<n;i++)
         {
-            dp[i]=new int[]{e[i],s[i]};
+            dp[i]=new int[]{nums1[i],nums2[i]};
         }
-        Arrays.sort(dp,(a,b)->b[0]-a[0]);
-        long ans=0,sum=0;
+        long sum=0,maxi=0;
+        Arrays.sort(dp,(a,b)->b[1]-a[1]);
         PriorityQueue<Integer> pq=new PriorityQueue<>();
         for(i=0;i<n;i++)
         {
             int x=dp[i][0];
             int y=dp[i][1];
-            pq.add(y);
-            sum+=y;
+            sum+=x;
+            pq.offer(x);
             if(pq.size()>k)
-            sum-=pq.poll();
+                sum-=pq.poll();
             if(pq.size()==k)
-            ans=Math.max(ans,sum*x);
+                maxi=Math.max(maxi,sum*y);
         }
-        return ans;
+        return maxi;
     }
 }
