@@ -19,7 +19,7 @@ class Solution {
     public int shortestPathBinaryMatrix(int[][] grid) {
         int i,j,m=grid.length,n=grid[0].length;
         int mini=Integer.MAX_VALUE;
-        Queue<tuple> q=new LinkedList<>();
+        Queue<tuple> q=new PriorityQueue<>((a,b)->a.level-b.level);
         if(grid[0][0]==1 || grid[m-1][n-1]==1) return -1;
         q.offer(new tuple(0,0,1));
         while(!q.isEmpty())
@@ -27,7 +27,7 @@ class Solution {
             tuple top=q.poll();
             if(top.row==m-1 && top.col==n-1)
             {
-                mini=Math.min(mini,top.level);
+                return top.level;
             }
             for(i=-1;i<=1;i++)
             {
