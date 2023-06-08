@@ -2,6 +2,7 @@ class Solution {
     public int uniquePaths(int m, int n) {
         int arr[][]=new int[m][n];
         int i,j;
+        //bottom up method of tabulation
         if(m==1 && n==1) return 1;
         if(m==2 && n==1) return 1;
         if(m==1 && n==2) return 1;
