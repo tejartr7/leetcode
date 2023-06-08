@@ -1,24 +1,27 @@
 class Solution {
     public int uniquePaths(int m, int n) {
-        int arr[][]=new int[m][n];
+        int dp[][]=new int[m][n];
         int i,j;
-        //bottom up method of tabulation
-        if(m==1 && n==1) return 1;
-        if(m==2 && n==1) return 1;
-        if(m==1 && n==2) return 1;
-        j=n-1;
+        //top down method of tabulation
         for(i=0;i<m;i++)
-            arr[i][j]=1;
-        i=m-1;
-        for(j=0;j<n;j++)
-            arr[i][j]=1;
-        for(i=m-2;i>=0;i--)
         {
-            for(j=n-2;j>=0;j--)
+            for(j=0;j<n;j++)
             {
-                arr[i][j]=arr[i+1][j]+arr[i][j+1];
+                if(i==j && i==0)
+                {
+                    dp[i][j]=1;
+                }
+                else
+                {
+                    int a=0,b=0;
+                    if(i>0)
+                        a+=dp[i-1][j];
+                    if(j>0)
+                        b+=dp[i][j-1];
+                    dp[i][j]=a+b;
+                }
             }
         }
-        return arr[0][0];
+        return dp[m-1][n-1];
     }
 }
