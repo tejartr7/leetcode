@@ -15,14 +15,26 @@ class Solution {
     }
     public int coinChange(int[] coins, int amount) {
         if(amount==0) return 0;
-        int i,n=coins.length;
+        int i,j,n=coins.length;
         int dp[][]=new int[n][amount+1];
-        for(i=0;i<n;i++)
+        i=0;
+        for(j=0;j<=amount;j++)
         {
-            Arrays.fill(dp[i],-1);
+            if(j%coins[0]==0)
+                dp[0][j]=j/coins[0];
+            else dp[0][j]=1000_000_000;
         }
-      
-        int x=helper(coins.length-1,coins,amount,dp);
+        for(i=1;i<n;i++)
+        {
+            for(j=0;j<=amount;j++){
+                int notTake=dp[i-1][j];
+                int take=1000000000;
+                if(coins[i]<=j)
+                take=1+dp[i][j-coins[i]];
+                dp[i][j]=Math.min(take,notTake);
+            }
+        }
+        int x=dp[coins.length-1][amount];
         return x>=1000000000?-1:x;
     }
 }
