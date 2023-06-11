@@ -18,10 +18,13 @@ class Solution {
                     a.add(nums[j]);
                     a.add(nums[k]);
                     res.add(a);
-                    j++;
-                    k--;
+                   
                     while(j<k && nums[j]==nums[j-1])
                     j++;
+                    while(k>j && nums[k]==nums[k-1])
+                        k--;
+                    k--;
+                    
                  }
                 else if(sum<0) j++;
                 else
