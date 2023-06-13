@@ -21,7 +21,7 @@ class Solution {
     }
     public int minimizeTheDifference(int[][] mat, int target) {
         int i,j,m=mat.length,n=mat[0].length;
-        dp=new int[m][5000];
+        dp=new int[m][4901];
         for(i=0;i<m;i++)
             Arrays.fill(dp[i],-1);
         return helper(mat,target,0,0);
