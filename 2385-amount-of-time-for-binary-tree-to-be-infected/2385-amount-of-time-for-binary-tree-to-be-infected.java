@@ -37,9 +37,9 @@ class Solution {
         while(!q.isEmpty())
         {
             pair top=q.poll();
-            maxi=Math.max(maxi,top.lvl);
             if(set.contains(top.root.val))
                 continue;
+            maxi=Math.max(maxi,top.lvl);
             set.add(top.root.val);
             if(map.containsKey(top.root))
                 q.offer(new pair(map.get(top.root),top.lvl+1));
@@ -48,6 +48,6 @@ class Solution {
             if(top.root.right!=null)
                 q.offer(new pair(top.root.right,top.lvl+1));
         }
-        return maxi>0?maxi-1:maxi;
+        return maxi;
     }
 }
