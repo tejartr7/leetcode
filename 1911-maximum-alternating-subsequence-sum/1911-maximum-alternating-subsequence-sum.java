@@ -26,6 +26,8 @@ class Solution {
         for(int i=0;i<nums.length;i++)
             Arrays.fill(dp[i],-1);
         maxi=Math.max(maxi,helper(0, 1, nums));
+        for(int i=0;i<nums.length;i++)
+            Arrays.fill(dp[i],-1);
         maxi=Math.max(maxi,helper(0, 0, nums));
         return maxi;
     }
