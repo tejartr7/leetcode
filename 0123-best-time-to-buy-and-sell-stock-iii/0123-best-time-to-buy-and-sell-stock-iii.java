@@ -1,38 +1,28 @@
 class Solution {
-    int maxi=0;
-    public int helper(int ind,int b,int cap,int p[])
+    public int helper(int i,int b,int c,int p[],int dp[][][])
     {
-        if(ind==p.length || cap==0) return 0;
-        int profit=0;
+        if(i==p.length) return 0;
+        if(c==0) return 0;
+        if(dp[i][b][c]!=-1) return dp[i][b][c];
+        int pro=0;
         if(b==1)
         {
-            profit=Math.max(-p[ind]+helper(ind+1,0,cap,p),helper(ind+1,1,cap,p));
+            pro=Math.max(-p[i]+helper(i+1,0,c,p,dp),helper(i+1,1,c,p,dp));
         }
         else
         {
-            profit=Math.max(p[ind]+helper(ind+1,1,cap-1,p),helper(ind+1,0,cap,p));
+            pro=Math.max(p[i]+helper(i+1,1,c-1,p,dp),helper(i+1,0,c,p,dp));
         }
-        return profit;
+        return dp[i][b][c]=pro;
     }
-    public int maxProfit(int[] p) {
+    public int maxProfit(int[] prices) {
+        int dp[][][]=new int[prices.length][2][3];
         int i,j;
-        int n=p.length;
-        int dp[][][]=new int[n+1][2][3];
-        int c=0;
-       
-        for(i=n-1;i>=0;i--)
+        for(i=0;i<prices.length;i++)
         {
             for(j=0;j<2;j++)
-            {
-                for(c=1;c<=2;c++)
-                {
-                   if(j==1)
-                   dp[i][j][c]=Math.max(-p[i]+dp[i+1][0][c],dp[i+1][1][c]);
-                   else
-                   dp[i][j][c]=Math.max(p[i]+dp[i+1][1][c-1],dp[i+1][0][c]);    
-                }
-            }
+            Arrays.fill(dp[i][j],-1);
         }
-        return dp[0][1][2];
+        return helper(0,1,2,prices,dp);
     }
 }
