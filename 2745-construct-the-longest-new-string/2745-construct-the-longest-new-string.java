@@ -23,7 +23,7 @@ class Solution {
         }
         if(x>=1) count+=2;
         if(y>=1) count+=2;
-        count+=(z*2);
+        count+=z*2;
         return count;
     }
 }
