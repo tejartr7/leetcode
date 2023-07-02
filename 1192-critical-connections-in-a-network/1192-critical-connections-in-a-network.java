@@ -30,7 +30,7 @@ class Solution {
                     ans.add(Arrays.asList(curr, next));
                 }
             } else if (next != prev) {
-                low[curr] = Math.min(low[curr], disc[next]);
+                low[curr] = Math.min(low[curr], low[next]);
             }
         }
     }
