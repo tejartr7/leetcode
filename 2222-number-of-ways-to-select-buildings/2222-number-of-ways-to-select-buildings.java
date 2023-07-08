@@ -1,5 +1,4 @@
 class Solution {
-
     public long numberOfWays(String s) {
         int i,n=s.length();
         long ans=0;
@@ -8,8 +7,8 @@ class Solution {
         map.put("1",0l);
         map.put("10",0l);
         map.put("01",0l);
-        map.put("101",0l);
-        map.put("010",0l);
+        //map.put("101",0l);
+       // map.put("010",0l);
         for(i=0;i<n;i++)
         {
             if(s.charAt(i)=='1')
