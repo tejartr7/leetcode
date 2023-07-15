@@ -1,6 +1,7 @@
-SELECT MAX(salary) AS SecondHighestSalary
-FROM Employee
-WHERE salary < (
-    SELECT MAX(salary)
-    FROM Employee
-)
+select nullif((SELECT DISTINCT salary 
+     FROM Employee s1
+     WHERE 1 = (
+         SELECT COUNT(DISTINCT salary)
+         FROM Employee s2
+         WHERE s2.salary > s1.salary
+     )),null) as SecondHighestSalary
