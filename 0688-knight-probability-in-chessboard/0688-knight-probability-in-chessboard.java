@@ -1,31 +1,47 @@
-public class Solution {
-    public double knightProbability(int n, int k, int row, int column) {
-        int[][] dir = {{1,2},{-1,2},{1,-2},{-1,-2},{2,1},{-2,1},{2,-1},{-2,-1}};
+class Solution {
+    double a = 0;
+    double[][][] memo;
 
-        double[][][] dp = new double[k + 1][n][n];
-        dp[0][row][column] = 1.0;
-        int prevI;
-        int prevJ;
-        for (int m = 1; m <= k; m++) {
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) { 
-                    for (int[] d : dir) {
-                        prevI = i - d[0];
-                        prevJ = j - d[1];
-                        if (prevI >= 0 && prevI < n && prevJ >= 0 && prevJ < n) {
-                            dp[m][i][j] += dp[m - 1][prevI][prevJ] / 8.0;
-                        }
-                    }
-                }
-            }
+    public boolean valid(int i, int j, int n) {
+        return i >= 0 && i < n && j >= 0 && j < n;
+    }
+
+    public double dfs(int i, int j, int n, int k) {
+        if (k == 0) {
+            if (valid(i, j, n))
+                return 1;
+            return 0;
         }
 
-        double ans = 0.0;
+        if (!valid(i, j, n))
+            return 0;
+
+        if (memo[i][j][k] != -1)
+            return memo[i][j][k];
+
+        double sum = 0;
+        sum += dfs(i - 2, j + 1, n, k - 1);
+        sum += dfs(i - 2, j - 1, n, k - 1);
+        sum += dfs(i + 2, j + 1, n, k - 1);
+        sum += dfs(i + 2, j - 1, n, k - 1);
+        sum += dfs(i - 1, j + 2, n, k - 1);
+        sum += dfs(i + 1, j + 2, n, k - 1);
+        sum += dfs(i - 1, j - 2, n, k - 1);
+        sum += dfs(i + 1, j - 2, n, k - 1);
+
+        memo[i][j][k] = sum;
+        return memo[i][j][k];
+    }
+
+    public double knightProbability(int n, int k, int row, int col) {
+        double b = (double) Math.pow(8, k);
+        memo = new double[n][n][k + 1];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                ans += dp[k][i][j];
+                Arrays.fill(memo[i][j], -1);
             }
         }
-        return ans;
+        double result = dfs(row, col, n, k);
+        return result / b;
     }
 }
