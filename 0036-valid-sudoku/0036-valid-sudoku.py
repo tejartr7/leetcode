@@ -9,9 +9,7 @@ class Solution:
                     cnt=cnt+1
                 if board[3 * (a // 3) + i // 3][3 * (b // 3) + i % 3] == c:
                     cnt=cnt+1
-            if(cnt>3):
-                return False
-            return True
+            return cnt==3
 
         for i in range(9):
             for j in range(9):
