@@ -5,7 +5,7 @@ class Solution {
 
         // 1. Find the index of the peak element
         int low = 1;
-        int high = length - 2;
+        int high = length - 1;
         while (low != high) {
             int testIndex = (low + high) / 2;
             if (mountainArr.get(testIndex) < mountainArr.get(testIndex + 1)) {
